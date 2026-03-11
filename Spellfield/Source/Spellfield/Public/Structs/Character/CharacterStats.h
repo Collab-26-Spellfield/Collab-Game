@@ -4,8 +4,6 @@
 
 #include "CoreMinimal.h"
 
-#include "Engine/DataTable.h"
-
 #include "Structs/Character/HealthStats.h"
 #include "Structs/Character/AttackStats.h"
 #include "Structs/Character/BlockStats.h"
@@ -16,7 +14,7 @@
 #include "CharacterStats.generated.h"
 
 USTRUCT(BlueprintType)
-struct FCharacterStats : public FTableRowBase
+struct FCharacterStats
 {
 	GENERATED_BODY()
 

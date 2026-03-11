@@ -38,14 +38,14 @@ struct FProjectileStats
 	float LifeStealPercentageBonus = 0.0f;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "ProjectileStats")
-	float Penetration = 0.0f;
+	bool Penetration = false;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "ProjectileStats")
-	float SlowOnHit = 0.0f;
+	bool SlowOnHit = false;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "ProjectileStats")
-	float Lifesteal = 0.0f;
+	bool Lifesteal = false;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "ProjectileStats")
-	float MultishotBonus = 0.0f;
+	int32 MultishotBonus = 0;
 };
