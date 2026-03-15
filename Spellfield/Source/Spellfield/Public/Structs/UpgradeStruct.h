@@ -12,9 +12,19 @@ struct FUpgrade : public FTableRowBase
 {
 	GENERATED_BODY()
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "UpgradeParameters")
-	FString UpgradeName;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "UpgradeParameters")
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "UpgradeParameters | Rarity")
 	EUpgradeRarity Rarity;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "UpgradeParameters | Rarity")
+	float Weighting = 0.0f;
+
+	//UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "UpgradeParameters | Identifiers")
+	//FString UpgradeName;
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "UpgradeParameters | Identifiers")
+	FString FlavorText;
+
+;
+
+
 };
