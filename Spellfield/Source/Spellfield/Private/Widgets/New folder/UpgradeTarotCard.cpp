@@ -31,14 +31,14 @@ void UUpgradeTarotCard::CardReleased_Implementation()
 	Super::CardReleased_Implementation();
 }
 
-void UUpgradeTarotCard::InitializeCard(FUpgrade CardUpgrade)
+void UUpgradeTarotCard::InitializeCard(FCardStats CardUpgrade)
 {
 	OwnedUpgrade = CardUpgrade;
 
 	UpdateUpradeTarotLayout(OwnedUpgrade);
 }
 
-void UUpgradeTarotCard::UpdateUpradeTarotLayout_Implementation(FUpgrade UpgradeParameters)
+void UUpgradeTarotCard::UpdateUpradeTarotLayout_Implementation(FCardStats UpgradeParameters)
 {
 	UE_LOG(LogTemp, Warning, TEXT("UpdateUpgradeTarotLayout not overriden in blueprint"));
 }

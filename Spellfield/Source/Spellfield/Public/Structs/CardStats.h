@@ -22,8 +22,8 @@ struct FCardStats : public FTableRowBase
 {
   GENERATED_BODY()
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "CardStats")
-	FUpgrade UpgradeParameters;
+  UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "CardStats")
+  FUpgrade UpgradeParameters;
 	
   UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "CardStats")
   FHealthStats HealthParameters;
