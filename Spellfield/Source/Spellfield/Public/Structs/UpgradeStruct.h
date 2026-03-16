@@ -18,8 +18,8 @@ struct FUpgrade : public FTableRowBase
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "UpgradeParameters | Rarity")
 	float Weighting = 0.0f;
 
-	//UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "UpgradeParameters | Identifiers")
-	//FString UpgradeName;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "UpgradeParameters | Identifiers")
+	FString UpgradeName;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "UpgradeParameters | Identifiers")
 	FString FlavorText;
