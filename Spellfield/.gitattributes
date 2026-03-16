@@ -1,8 +1,6 @@
 # Auto detect text files and perform LF normalization
 * text=auto
 
-#Unreal
-*.uasset filter=lfs diff=lfs merge=lfs -text
 
 #3D Models
 *.3dm filter=lfs diff=lfs merge=lfs -text
