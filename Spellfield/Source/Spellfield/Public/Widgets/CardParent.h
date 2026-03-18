@@ -21,7 +21,7 @@ class SPELLFIELD_API UCardParent : public UUserWidget
 
 public:
 
-	virtual void NativeTick(const FGeometry& MyGeometry, float InDeltaTime);
+	void NativeTick(const FGeometry& MyGeometry, float InDeltaTime);
 
 	UFUNCTION()
 	void UpdateCardDesiredTransform(FWidgetTransform DesiredTransform, float InterpSpeed);
@@ -88,6 +88,6 @@ protected:
 	bool bIsRepositioning = false;
 
 	UPROPERTY()
-	float RepositionTime = 0.0f;
+	float RepositionSpeed = 0.0f;
 	
 };
