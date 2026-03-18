@@ -11,9 +11,6 @@ struct FAttackStats
 	GENERATED_BODY()
 	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "AttackStats")
-	float PercentageIncrease = 0.0f;
-	
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "AttackStats")
 	float AttackCooldown = 0.0f;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "AttackStats")
