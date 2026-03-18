@@ -35,9 +35,11 @@ void UCardHandParent::PopulateCardHand(TArray<FCardStats> DesiredUpgrades)
 
 void UCardHandParent::UpdateCardPositionsInHand()
 {
-	for (int i =0; i<HeldUpgradeCards.Num()-1; i++)
+	for (int i =0; i<HeldUpgradeCards.Num(); i++)
 	{
-		HeldUpgradeCards[i]->UpdateCardDesiredTransform(FindCardDesiredTransformInHand(i), CardDrawingTime);
+		HeldUpgradeCards[i]->UpdateCardDesiredTransform(FindCardDesiredTransformInHand(i), CardDrawingSpeed);
+
+		UE_LOG(LogTemp, Warning, TEXT("Updating Card Desired Transform: %d"), i);
 	}
 }
 
@@ -45,7 +47,9 @@ FWidgetTransform UCardHandParent::FindCardDesiredTransformInHand(int32 CardIndex
 {
 	FWidgetTransform DesiredTransform;
 
-	DesiredTransform.Shear = { FindCardDesiredXTranslation(CardIndex), FindCardDesiredYTranslation(CardIndex)};
+	//UE_LOG(LogTemp, Warning, TEXT("Card Index Is: %d"), CardIndex);
+
+	DesiredTransform.Translation = { FindCardDesiredXTranslation(CardIndex), FindCardDesiredYTranslation(CardIndex)};
 	DesiredTransform.Scale = { 1.0f,1.0f };
 	DesiredTransform.Shear = {0.0f,0.0f};
 	DesiredTransform.Angle = FindCardDesiredAngle(CardIndex);
@@ -57,15 +61,20 @@ float UCardHandParent::FindCardDesiredXTranslation(int32 CardIndex)
 {
 	float XTranslation = 0.0f;
 
-	float HoverDisplacement = (HoveredCardIndex < CardIndex && HoveredCardIndex >= -1) ? CardXHoverDisplacement : 0.0f;
+	//float HoverDisplacement = (HoveredCardIndex < CardIndex && HoveredCardIndex >= -1) ? CardXHoverDisplacement : 0.0f;
 	//Card Width
 	FVector2D CentrePosition = { HandCentre ,0.0f };
 
-	if (HeldUpgradeCards.Num() % 2 == 0) CentrePosition.X = +CardSpacing / 2;
+	if (HeldUpgradeCards.Num() % 2 == 0) CentrePosition.X = -CardSpacing / 2;
 
-	float CardXPositionInHand = CardSpacing * (CardIndex - (HeldUpgradeCards.Num() / 2));
+	float CardXPositionInHand = GetCardIndexDistanceFromCentre(CardIndex) * CardSpacing;
+	;
 
-	XTranslation = HoverDisplacement + CentrePosition.X + CardXPositionInHand;
+	//UE_LOG(LogTemp, Warning, TEXT("Card Spaced Translation Is: %d"), FMath::RoundToInt32(CardXPositionInHand));
+
+	XTranslation = CentrePosition.X + CardXPositionInHand;
+
+	UE_LOG(LogTemp, Warning, TEXT("Card Spaced Translation Is: %d"), FMath::RoundToInt32(XTranslation));
 
 	return XTranslation;
 }

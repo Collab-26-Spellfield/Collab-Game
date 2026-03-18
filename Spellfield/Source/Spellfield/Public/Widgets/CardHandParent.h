@@ -70,7 +70,7 @@ private:
 	float CardSpacing = 200.0f;
 
 	UPROPERTY(EditDefaultsOnly)
-	float CardDrawingTime = 1.0f;
+	float CardDrawingSpeed = 1.0f;
 
 	UPROPERTY(EditDefaultsOnly)
 	float ArcHeight = 10.0f;
