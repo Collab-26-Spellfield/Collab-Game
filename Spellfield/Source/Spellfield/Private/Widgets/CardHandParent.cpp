@@ -55,16 +55,60 @@ FWidgetTransform UCardHandParent::FindCardDesiredTransformInHand(int32 CardIndex
 
 float UCardHandParent::FindCardDesiredXTranslation(int32 CardIndex)
 {
-	return 0.0f;
+	float XTranslation = 0.0f;
+
+	float HoverDisplacement = (HoveredCardIndex < CardIndex && HoveredCardIndex >= -1) ? CardXHoverDisplacement : 0.0f;
+	//Card Width
+	FVector2D CentrePosition = { HandCentre ,0.0f };
+
+	if (HeldUpgradeCards.Num() % 2 == 0) CentrePosition.X = +CardSpacing / 2;
+
+	float CardXPositionInHand = CardSpacing * (CardIndex - (HeldUpgradeCards.Num() / 2));
+
+	XTranslation = HoverDisplacement + CentrePosition.X + CardXPositionInHand;
+
+	return XTranslation;
 }
 
 float UCardHandParent::FindCardDesiredYTranslation(int32 CardIndex)
 {
-	return 0.0f;
+	float YTranslation = 0.0f;
+
+	float HoverDisplacement = (HoveredCardIndex < CardIndex && HoveredCardIndex >= -1) ? CardYHoverDisplacememt : 0.0f;
+	float CardYPositionInHand = FMath::Abs(GetCardIndexDistanceFromCentre(CardIndex) * ArcHeight);
+
+	YTranslation = HoverDisplacement + CardYPositionInHand - HandHeight;
+
+	return YTranslation;
 }
 
 float UCardHandParent::FindCardDesiredAngle(int32 CardIndex)
 {
-	return 0.0f;
+	float NewAngle = 0.0f;
+
+	NewAngle = GetCardIndexDistanceFromCentre(CardIndex) * CardAngle;
+
+	return NewAngle;
+}
+
+float UCardHandParent::GetCardIndexDistanceFromCentre(int32 CardIndex)
+{
+	int32 IndexDistanceFromCentre = 0;
+
+	float CentreCardIndex = (HeldUpgradeCards.Num() - 1) / 2;
+
+	float DistanceFromCentre = CardIndex - CentreCardIndex;
+
+	if (DistanceFromCentre > 0)
+	{
+		//~right of centre (positive)
+		IndexDistanceFromCentre = FMath::RoundToInt32(DistanceFromCentre - 0.5f);
+	}
+	else
+	{
+		IndexDistanceFromCentre = FMath::RoundToInt32(DistanceFromCentre);
+	}
+
+	return IndexDistanceFromCentre;
 }
 

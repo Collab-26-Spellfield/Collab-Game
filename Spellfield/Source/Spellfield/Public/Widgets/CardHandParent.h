@@ -29,8 +29,7 @@ public:
 
 protected:
 
-	UPROPERTY(EditDefaultsOnly, BlueprintReadOnly)
-	TSubclassOf<UCardParent> CreatedCardClass;
+
 
 	UFUNCTION(BlueprintNativeEvent, BlueprintCallable)
 	void InitializeCardHand(const TArray<FCardStats>& UpgradesToPresent);
@@ -60,6 +59,12 @@ private:
 	UFUNCTION()
 	float FindCardDesiredAngle(int32 CardIndex);
 
+	UFUNCTION()
+	float GetCardIndexDistanceFromCentre(int32 CardIndex);
+
+	UPROPERTY(EditDefaultsOnly)
+	TSubclassOf<UCardParent> CreatedCardClass;
+
 	//Layout parameters
 	UPROPERTY(EditDefaultsOnly)
 	float CardSpacing = 200.0f;
@@ -68,7 +73,7 @@ private:
 	float CardDrawingTime = 1.0f;
 
 	UPROPERTY(EditDefaultsOnly)
-	float ArcHeight = 50.0f;
+	float ArcHeight = 10.0f;
 
 	UPROPERTY(EditDefaultsOnly)
 	float CardXHoverDisplacement = 100.0f;
