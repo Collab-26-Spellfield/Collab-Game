@@ -4,7 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "Widgets/CardParent.h"
-#include "Structs/UpgradeStruct.h"
+#include "Structs/CardStats.h"
 #include "UpgradeTarotCard.generated.h"
 
 /**
@@ -18,14 +18,14 @@ class SPELLFIELD_API UUpgradeTarotCard : public UCardParent
 public:
 
 	UPROPERTY(BlueprintReadOnly)
-	FUpgrade OwnedUpgrade;
+	FCardStats OwnedUpgrade;
 
 	UFUNCTION(BlueprintCallable)
-	 void InitializeCard(FUpgrade CardUpgrade);
+	 void InitializeCard(FCardStats CardUpgrade);
 
 	UFUNCTION(BlueprintNativeEvent, BlueprintCallable)
-	void UpdateUpradeTarotLayout(FUpgrade UpgradeParameters);
-	void UpdateUpradeTarotLayout_Implementation(FUpgrade UpgradeParameters);
+	void UpdateUpradeTarotLayout(FCardStats UpgradeParameters);
+	void UpdateUpradeTarotLayout_Implementation(FCardStats UpgradeParameters);
 
 protected:
 
