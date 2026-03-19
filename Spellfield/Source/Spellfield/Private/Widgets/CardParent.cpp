@@ -14,10 +14,10 @@ void UCardParent::NativeTick(const FGeometry& MyGeometry, float InDeltaTime)
 	{
 
 		//Make In Progress Reposition Transform
-		float RepositionAngle = FMath::FInterpTo(GetRenderTransform().Angle, DesiredTransform.Angle, InDeltaTime, RepositionTime);
+		float RepositionAngle = FMath::FInterpTo(GetRenderTransform().Angle, DesiredTransform.Angle, InDeltaTime, RepositionSpeed);
 
-		FVector2D RepositionTranslation = { FMath::FInterpTo(GetRenderTransform().Translation.X, DesiredTransform.Translation.X, InDeltaTime, RepositionTime) ,
-											FMath::FInterpTo(GetRenderTransform().Translation.Y, DesiredTransform.Translation.Y, InDeltaTime, RepositionTime) };
+		FVector2D RepositionTranslation = { FMath::FInterpTo(GetRenderTransform().Translation.X, DesiredTransform.Translation.X, InDeltaTime, RepositionSpeed) ,
+											FMath::FInterpTo(GetRenderTransform().Translation.Y, DesiredTransform.Translation.Y, InDeltaTime, RepositionSpeed) };
 
 		FWidgetTransform RepositionTransform = FWidgetTransform(RepositionTranslation, { 1.0f,1.0f }, { 0.0f,0.0f }, RepositionAngle);
 
@@ -29,6 +29,8 @@ void UCardParent::NativeTick(const FGeometry& MyGeometry, float InDeltaTime)
 		{
 			//Close Gate
 			bIsRepositioning = false;
+
+			//UE_LOG(LogTemp, Warning, TEXT("Card Moved To New Desired Locations"));
 		}
 
 	}
@@ -41,7 +43,9 @@ void UCardParent::UpdateCardDesiredTransform(FWidgetTransform NewTransform, floa
 	StartingTransform = GetRenderTransform();
 	DesiredTransform = NewTransform;
 
-	RepositionTime = InterpSpeed;
+	//UE_LOG(LogTemp, Warning, TEXT("Desired X Translation Is: %d"), FMath::RoundToInt32(NewTransform.Translation.X));
+
+	RepositionSpeed = InterpSpeed;
 
 	//Open Gate
 	bIsRepositioning = true;
