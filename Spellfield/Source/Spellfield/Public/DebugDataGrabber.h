@@ -4,33 +4,38 @@
 
 #include "CoreMinimal.h"
 #include "Subsystems/GameInstanceSubsystem.h"
+#include "Structs/CardStats.h"
 #include "DebugDataGrabber.generated.h"
 
-struct FCardStats;
 /**
  * 
  */
-USTRUCT()
+USTRUCT(BlueprintType)
 struct FDebugLogData : public FTableRowBase
 {
 	GENERATED_BODY()
 
-	int8 playerIDAsIndex;
-	int8 playerIDThatWon;
-	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	int playerIDAsIndex;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	int playerIDThatWon;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	UObject* ObjectData;
-	int8 RoundsWon;
-	int8 RoundCounter;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	int RoundsWon;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	int RoundCounter;
 
 	//rounds/times picked (pick rate)
-	int8 NumberOfTimesCardPicked;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	int NumberOfTimesCardPicked;
 	
 	//rounds won/times
-	int8 NumberOfTimesWonWithCard;
-	FCardStats* Stats;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	int NumberOfTimesWonWithCard;
 	
-
-	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	FCardStats Stats;
 	
 };
 
@@ -40,10 +45,12 @@ class SPELLFIELD_API UDebugDataGrabber : public UGameInstanceSubsystem
 {
 	GENERATED_BODY()
 
-	FDebugLogData* DebugData[3]; //array set to match max player count of 4
+	protected:
+	UPROPERTY(EditAnywhere)
+	FDebugLogData DebugData[3]; //array set to match max player count of 4
 	
 	UFUNCTION(BlueprintCallable)
-	void LogDebugData(FDebugLogData DataToPull, int PlayerID);
+	void LogDebugData(FDebugLogData DataToPull);
 
 	UFUNCTION(BlueprintCallable)
 	void WriteAllSavedDebugDataToFile(FString FileName);

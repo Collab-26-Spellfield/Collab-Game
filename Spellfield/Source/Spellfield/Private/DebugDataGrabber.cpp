@@ -5,14 +5,12 @@
 #include <fstream>
 #include <iostream>
 
-#include "Structs/CardStats.h"
-
-void UDebugDataGrabber::LogDebugData(FDebugLogData DataToPull, int PlayerID)
+void UDebugDataGrabber::LogDebugData(FDebugLogData DataToPull)
 {
 	auto NameOfClass = DataToPull.Stats;
-	DataToPull.Stats->UpgradeParameters.UpgradeName;
-	DataToPull.Stats->UpgradeParameters.UpgradeName;
-	DataToPull.Stats->UpgradeParameters.UpgradeName;
+	DataToPull.Stats.UpgradeParameters.UpgradeName;
+	DataToPull.Stats.UpgradeParameters.UpgradeName;
+	DataToPull.Stats.UpgradeParameters.UpgradeName;
 	
 	
 	UE_LOG(LogClass, Display, TEXT("Log class"));
@@ -21,19 +19,20 @@ void UDebugDataGrabber::LogDebugData(FDebugLogData DataToPull, int PlayerID)
 
 void UDebugDataGrabber::WriteAllSavedDebugDataToFile(FString FileName)
 {
-	std::fstream file;
-	file.open("FileName", std::ios::in);
+	std::ofstream file;
+	file.open("FileName.txt", std::ios::in);
 	for (auto Data : DebugData)
 	{
-		file << "test" << std::endl;
-		file.close();
+		file << "test";
 	}
+	file.close();
 }
 
 void UDebugDataGrabber::ClearLogSavedData()
 {
 	for (int i = 0; i < 4; ++i)
 	{
-		DebugData[i] = new FDebugLogData;
+		DebugData[i] = FDebugLogData();
+		
 	}
 }
