@@ -31,11 +31,13 @@ struct FDebugLogData : public FTableRowBase
 	int NumberOfTimesCardPicked;
 	
 	//rounds won/times
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	int NumberOfTimesWonWithCard;
 	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 	FCardStats Stats;
+
+	//card is the key and value is the number of times won with card
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	TMap<FString,int> PlayerCards;
 	
 };
 
@@ -45,16 +47,26 @@ class SPELLFIELD_API UDebugDataGrabber : public UGameInstanceSubsystem
 {
 	GENERATED_BODY()
 
-	protected:
+	private:
 	UPROPERTY(EditAnywhere)
 	FDebugLogData DebugData[3]; //array set to match max player count of 4
-	
+
+	/**Do Not Use*/
 	UFUNCTION(BlueprintCallable)
 	void LogDebugData(FDebugLogData DataToPull);
 
+	/**Writes all debug data to a specified file
+	* @param FileName specifies the file the data should be saved as
+	*/
 	UFUNCTION(BlueprintCallable)
 	void WriteAllSavedDebugDataToFile(FString FileName);
 
-	UFUNCTION()
+	/**Clears all data from the debug variables*/
+	UFUNCTION(BlueprintCallable)
 	void ClearLogSavedData();
+
+	/**Updates all card information associated to each player*/
+	UFUNCTION(BlueprintCallable)
+	void UpdateCardDataForPlayerOnRoundBasis(FCardStats Card, int PlayerID, bool PlayerWon);
+	
 };
