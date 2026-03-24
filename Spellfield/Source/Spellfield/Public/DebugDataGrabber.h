@@ -10,37 +10,35 @@
 /**
  * 
  */
+USTRUCT()
+struct FDebugPlayerCardData : public FTableRowBase
+{
+	GENERATED_BODY()
+	
+	int TimesCardPicked = 0;
+	int TimesWonWithCard = 0;
+};
+
+
 USTRUCT(BlueprintType)
 struct FDebugLogData : public FTableRowBase
 {
 	GENERATED_BODY()
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	int playerIDAsIndex;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	int playerIDThatWon;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	UObject* ObjectData;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	int RoundsWon;
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	int RoundCounter;
-
-	//rounds/times picked (pick rate)
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	int NumberOfTimesCardPicked;
+	UPROPERTY(BlueprintReadWrite)
+	int PlayerID = 0;
 	
-	//rounds won/times
+	UPROPERTY(BlueprintReadWrite)
+	int RoundsWon = 0;
 	
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
+	UPROPERTY(BlueprintReadWrite)
 	FCardStats Stats;
 
 	//card is the key and value is the number of times won with card
-	UPROPERTY(EditAnywhere, BlueprintReadWrite)
-	TMap<FString,int> PlayerCards;
+	UPROPERTY(BlueprintReadWrite)
+	TMap<FString, FDebugPlayerCardData> PlayerCards;
 	
 };
-
 
 UCLASS()
 class SPELLFIELD_API UDebugDataGrabber : public UGameInstanceSubsystem
@@ -48,9 +46,12 @@ class SPELLFIELD_API UDebugDataGrabber : public UGameInstanceSubsystem
 	GENERATED_BODY()
 
 	private:
-	UPROPERTY(EditAnywhere)
+	UPROPERTY()
 	FDebugLogData DebugData[3]; //array set to match max player count of 4
 
+	UPROPERTY()
+	int RoundCounter = 0;
+	
 	/**Do Not Use*/
 	UFUNCTION(BlueprintCallable)
 	void LogDebugData(FDebugLogData DataToPull);

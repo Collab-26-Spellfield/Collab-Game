@@ -16,8 +16,8 @@ void UDebugDataGrabber::LogDebugData(FDebugLogData DataToPull)
 		{
 			for (auto DataPC : DBGData.PlayerCards)
 			{
-				if (DataToPull.playerIDThatWon == DebugData[DataToPull.playerIDAsIndex].playerIDThatWon)
-					DBGData.playerIDThatWon = DataToPull.playerIDThatWon;
+				if (DataToPull.PlayerID == DebugData[DataToPull.PlayerID].PlayerID)
+					DBGData.PlayerID = DataToPull.PlayerID;
 
 				if (DataPC.Key != DataToPull.Stats.UpgradeParameters.UpgradeName)
 				{
@@ -48,8 +48,8 @@ void UDebugDataGrabber::WriteAllSavedDebugDataToFile(FString FileName)
 	{
 		FString DataContents =
 			"Upgrade Name:" + Data.Stats.UpgradeParameters.UpgradeName + "\n"
-			"Number of Times Card Picked" + FString::FromInt(Data.NumberOfTimesCardPicked) + "\n"
-			"Winning Player" + FString::FromInt(Data.playerIDThatWon) + "\n"
+			//"Number of Times Card Picked" + FString::FromInt(Data) + "\n"
+			"Winning Player" + FString::FromInt(Data.PlayerID) + "\n"
 
 		;
 		file << "test";
@@ -70,18 +70,24 @@ void UDebugDataGrabber::ClearLogSavedData()
 
 void UDebugDataGrabber::UpdateCardDataForPlayerOnRoundBasis(FCardStats Card, int PlayerID, bool PlayerWon)
 {
+	RoundCounter++;
+
+	if (DebugData[PlayerID-1].PlayerCards.Find(Card.UpgradeParameters.UpgradeName))
+		DebugData[PlayerID-1].PlayerCards.Find(Card.UpgradeParameters.UpgradeName)->TimesCardPicked++;
+		
 	if (PlayerWon)
 	{
 		for (auto& Element : DebugData[PlayerID - 1].PlayerCards)
 		{
-			Element.Value++;
-			UE_LOG(LogTemp, Warning, TEXT("The card %s has won %i times"), *Element.Key, Element.Value);
+			Element.Value.TimesWonWithCard++;
+			UE_LOG(LogTemp, Warning, TEXT("The card %s has won %i times and has been picked %i times by PlayerID: %i"), *Element.Key, Element.Value.TimesWonWithCard, Element.Value.TimesCardPicked, PlayerID);
 		}
+		DebugData[PlayerID - 1].RoundsWon++;
 	}
 	
 	if (!DebugData[PlayerID-1].PlayerCards.Find(Card.UpgradeParameters.UpgradeName))
 	{
-		DebugData[PlayerID-1].PlayerCards.Add(Card.UpgradeParameters.UpgradeName);
+		DebugData[PlayerID-1].PlayerCards.Add(Card.UpgradeParameters.UpgradeName).TimesCardPicked++;
 	}
 	
 }
