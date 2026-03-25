@@ -47,7 +47,7 @@ class SPELLFIELD_API UDebugDataGrabber : public UGameInstanceSubsystem
 
 	private:
 	UPROPERTY()
-	FDebugLogData DebugData[3]; //array set to match max player count of 4
+	FDebugLogData DebugData[4]; //array set to match max player count of 4
 
 	UPROPERTY()
 	int RoundCounter = 0;
