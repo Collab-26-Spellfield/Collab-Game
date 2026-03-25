@@ -6,6 +6,8 @@
 #include <iostream>
 #include <string>
 
+#include "HttpModule.h"
+
 
 void UDebugDataGrabber::LogDebugData(FDebugLogData DataToPull)
 {
@@ -46,6 +48,14 @@ void UDebugDataGrabber::WriteAllSavedDebugDataToFile(FString FileName)
 	file.open(fullPath, std::ios::in);
 	for (auto Data : DebugData)
 	{
+		//FFileHelper::SaveStringArrayToFile();
+		FString SaveDirectory = "C:/Users";
+		FString CurrentUser = GetProjectUserConfigFilename();
+		//auto request = FHttpModule::Get().CreateRequest();
+		//
+		//request->ProcessRequest();
+		//request->OnProcessRequestComplete().BindLambda([](FHttpRequestPtr));
+		
 		FString DataContents =
 			"Upgrade Name:" + Data.Stats.UpgradeParameters.UpgradeName + "\n"
 			//"Number of Times Card Picked" + FString::FromInt(Data) + "\n"
@@ -80,7 +90,7 @@ void UDebugDataGrabber::UpdateCardDataForPlayerOnRoundBasis(FCardStats Card, int
 		for (auto& Element : DebugData[PlayerID - 1].PlayerCards)
 		{
 			Element.Value.TimesWonWithCard++;
-			UE_LOG(LogTemp, Warning, TEXT("The card %s has won %i times and has been picked %i times by PlayerID: %i"), *Element.Key, Element.Value.TimesWonWithCard, Element.Value.TimesCardPicked, PlayerID);
+			UE_LOG(LogTemp, Warning, TEXT("The card %s has won %i times and has been picked %i times by PlayerID: %i on round %i"), *Element.Key, Element.Value.TimesWonWithCard, Element.Value.TimesCardPicked, PlayerID, RoundCounter);
 		}
 		DebugData[PlayerID - 1].RoundsWon++;
 	}
@@ -90,4 +100,31 @@ void UDebugDataGrabber::UpdateCardDataForPlayerOnRoundBasis(FCardStats Card, int
 		DebugData[PlayerID-1].PlayerCards.Add(Card.UpgradeParameters.UpgradeName).TimesCardPicked++;
 	}
 	
+}
+
+void UDebugDataGrabber::OnGameEndPrintAllData()
+{
+	GameCount++;
+	UE_LOG(LogClass, Error, TEXT("Game: %i | Rounds Played: %i"),GameCount, RoundCounter);
+	TMap<FString, FDebugPlayerCardData> OverallCardsChosen;
+	
+	for (int i = 0; i < _countof(DebugData); ++i)
+	{
+		for (auto CardsChosen: DebugData[i].PlayerCards)
+		{
+			if (!OverallCardsChosen.Find(CardsChosen.Key))
+			{
+				OverallCardsChosen.Add(CardsChosen.Key);
+			}
+			
+			OverallCardsChosen.Find(CardsChosen.Key)->TimesCardPicked += CardsChosen.Value.TimesCardPicked; 
+			OverallCardsChosen.Find(CardsChosen.Key)->TimesWonWithCard += CardsChosen.Value.TimesWonWithCard; 
+		}
+		
+	}
+	for (auto CardsChosen : OverallCardsChosen)
+	{
+		UE_LOG(LogClass, Error, TEXT("Card: %s, has been picked %i times and has won %i times"), *CardsChosen.Key, CardsChosen.Value.TimesCardPicked, CardsChosen.Value.TimesWonWithCard);
+		
+	}
 }

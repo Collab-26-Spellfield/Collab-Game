@@ -51,6 +51,9 @@ class SPELLFIELD_API UDebugDataGrabber : public UGameInstanceSubsystem
 
 	UPROPERTY()
 	int RoundCounter = 0;
+
+	UPROPERTY()
+	int GameCount = 0;
 	
 	/**Do Not Use*/
 	UFUNCTION(BlueprintCallable)
@@ -69,5 +72,8 @@ class SPELLFIELD_API UDebugDataGrabber : public UGameInstanceSubsystem
 	/**Updates all card information associated to each player*/
 	UFUNCTION(BlueprintCallable)
 	void UpdateCardDataForPlayerOnRoundBasis(FCardStats Card, int PlayerID, bool PlayerWon);
+
+	UFUNCTION(BlueprintCallable)
+	void OnGameEndPrintAllData();
 	
 };
