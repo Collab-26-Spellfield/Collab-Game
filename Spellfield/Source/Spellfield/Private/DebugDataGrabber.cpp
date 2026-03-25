@@ -80,7 +80,9 @@ void UDebugDataGrabber::ClearLogSavedData()
 
 void UDebugDataGrabber::UpdateCardDataForPlayerOnRoundBasis(FCardStats Card, int PlayerID, bool PlayerWon)
 {
-	RoundCounter++;
+	if (PlayerID == 1)
+		RoundCounter++;
+	
 
 	if (DebugData[PlayerID-1].PlayerCards.Find(Card.UpgradeParameters.UpgradeName))
 		DebugData[PlayerID-1].PlayerCards.Find(Card.UpgradeParameters.UpgradeName)->TimesCardPicked++;
@@ -92,7 +94,6 @@ void UDebugDataGrabber::UpdateCardDataForPlayerOnRoundBasis(FCardStats Card, int
 			Element.Value.TimesWonWithCard++;
 			UE_LOG(LogTemp, Warning, TEXT("The card %s has won %i times and has been picked %i times by PlayerID: %i on round %i"), *Element.Key, Element.Value.TimesWonWithCard, Element.Value.TimesCardPicked, PlayerID, RoundCounter);
 		}
-		DebugData[PlayerID - 1].RoundsWon++;
 	}
 	
 	if (!DebugData[PlayerID-1].PlayerCards.Find(Card.UpgradeParameters.UpgradeName))
