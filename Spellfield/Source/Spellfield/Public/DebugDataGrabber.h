@@ -50,10 +50,13 @@ class SPELLFIELD_API UDebugDataGrabber : public UGameInstanceSubsystem
 	FDebugLogData DebugData[4]; //array set to match max player count of 4
 
 	UPROPERTY()
+	TMap<FString, FDebugPlayerCardData> OverallCardsChosen;
+
+	UPROPERTY()
 	int RoundCounter = 1;
 
 	UPROPERTY()
-	int GameCount = 0;
+	int GameCount = 1;
 	
 	/**Do Not Use*/
 	UFUNCTION(BlueprintCallable)
@@ -63,7 +66,7 @@ class SPELLFIELD_API UDebugDataGrabber : public UGameInstanceSubsystem
 	* @param FileName specifies the file the data should be saved as
 	*/
 	UFUNCTION(BlueprintCallable)
-	void WriteAllSavedDebugDataToFile(FString FileName);
+	void WriteAllSavedDebugDataToFile();
 
 	/**Clears all data from the debug variables*/
 	UFUNCTION(BlueprintCallable)
@@ -75,5 +78,8 @@ class SPELLFIELD_API UDebugDataGrabber : public UGameInstanceSubsystem
 
 	UFUNCTION(BlueprintCallable)
 	void OnGameEndPrintAllData();
+
+	UFUNCTION()
+	void FetchAllAvailableDebugData();
 	
 };

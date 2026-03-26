@@ -37,36 +37,28 @@ void UDebugDataGrabber::LogDebugData(FDebugLogData DataToPull)
 	UE_LOG(LogBlueprint, Display, TEXT("Log Blueprint"));
 }
 
-void UDebugDataGrabber::WriteAllSavedDebugDataToFile(FString FileName)
+void UDebugDataGrabber::WriteAllSavedDebugDataToFile()
 {
-	//FFileHelper fileh;
-	std::string fullPath = TCHAR_TO_UTF8(*FPaths::ConvertRelativePathToFull(FPaths::ProjectDir())) + std::string(TCHAR_TO_UTF8(*FileName)) + ".txt";
-
-	FString path = FPaths::MakeValidFileName(FileName) + ".txt";
-		
-	std::ofstream file = std::ofstream();
-	file.open(fullPath, std::ios::in);
-	for (auto Data : DebugData)
+	std::string Path = TCHAR_TO_UTF8(*FPaths::ConvertRelativePathToFull(FPaths::ProjectDir()));
+	FString CompletePath = Path.c_str() + FString("PlayTestData.txt");
+	if (!FPaths::FileExists(CompletePath))
 	{
-		//FFileHelper::SaveStringArrayToFile();
-		FString SaveDirectory = "C:/Users";
-		FString CurrentUser = GetProjectUserConfigFilename();
-		//auto request = FHttpModule::Get().CreateRequest();
-		//
-		//request->ProcessRequest();
-		//request->OnProcessRequestComplete().BindLambda([](FHttpRequestPtr));
+		FString ContentToSave = "Game Count: "; ContentToSave.AppendInt(GameCount);
+		ContentToSave += "\n";
 		
-		FString DataContents =
-			"Upgrade Name:" + Data.Stats.UpgradeParameters.UpgradeName + "\n"
-			//"Number of Times Card Picked" + FString::FromInt(Data) + "\n"
-			"Winning Player" + FString::FromInt(Data.PlayerID) + "\n"
-
-		;
-		file << "test";
+		for (auto Data : OverallCardsChosen)
+		{
+			ContentToSave.Append("\n Card Upgrade Picked: " + Data.Key);
+			ContentToSave.Append("\t Card Picked: " + Data.Value.TimesCardPicked + *"\n");
+			ContentToSave.Append("\t Card Won: " + Data.Value.TimesWonWithCard) + *"\n";
+		}
+		FFileHelper::SaveStringToFile(ContentToSave, *CompletePath, FFileHelper::EEncodingOptions::AutoDetect, &IFileManager::Get(), EFileWrite::FILEWRITE_None);
+	}
+	else
+	{
+		UE_LOG(LogBlueprint, Warning, TEXT("File exists"));
 	}
 	
-	//FFileHelper::LoadFileToString(" ", FPaths::ProjectContentDir() + TEXT("TEST.txt"));
-	file.close();
 }
 
 void UDebugDataGrabber::ClearLogSavedData()
@@ -80,6 +72,7 @@ void UDebugDataGrabber::ClearLogSavedData()
 
 void UDebugDataGrabber::UpdateCardDataForPlayerOnRoundBasis(FCardStats Card, int PlayerID, bool PlayerWon)
 {
+	WriteAllSavedDebugDataToFile();
 	if (PlayerID == 1)
 		RoundCounter++;
 	
@@ -107,8 +100,18 @@ void UDebugDataGrabber::OnGameEndPrintAllData()
 {
 	GameCount++;
 	UE_LOG(LogClass, Error, TEXT("Game: %i | Rounds Played: %i"),GameCount, RoundCounter);
-	TMap<FString, FDebugPlayerCardData> OverallCardsChosen;
 	
+	FetchAllAvailableDebugData();
+	
+	for (auto CardsChosen : OverallCardsChosen)
+	{
+		UE_LOG(LogClass, Error, TEXT("Card: %s, has been picked %i times and has won %i times"), *CardsChosen.Key, CardsChosen.Value.TimesCardPicked, CardsChosen.Value.TimesWonWithCard);
+	}
+	WriteAllSavedDebugDataToFile();
+}
+
+void UDebugDataGrabber::FetchAllAvailableDebugData()
+{
 	for (int i = 0; i < _countof(DebugData); ++i)
 	{
 		for (auto CardsChosen: DebugData[i].PlayerCards)
@@ -121,11 +124,6 @@ void UDebugDataGrabber::OnGameEndPrintAllData()
 			OverallCardsChosen.Find(CardsChosen.Key)->TimesCardPicked += CardsChosen.Value.TimesCardPicked; 
 			OverallCardsChosen.Find(CardsChosen.Key)->TimesWonWithCard += CardsChosen.Value.TimesWonWithCard; 
 		}
-		
-	}
-	for (auto CardsChosen : OverallCardsChosen)
-	{
-		UE_LOG(LogClass, Error, TEXT("Card: %s, has been picked %i times and has won %i times"), *CardsChosen.Key, CardsChosen.Value.TimesCardPicked, CardsChosen.Value.TimesWonWithCard);
 		
 	}
 }
