@@ -40,7 +40,9 @@ void UDebugDataGrabber::LogDebugData(FDebugLogData DataToPull)
 void UDebugDataGrabber::WriteAllSavedDebugDataToFile()
 {
 	std::string Path = TCHAR_TO_UTF8(*FPaths::ConvertRelativePathToFull(FPaths::ProjectDir()));
-	FString CompletePath = Path.c_str() + FString("PlayTestData.txt");
+	FDateTime Time = FDateTime::Now();
+	FString CompletePath = Path.c_str() + FString("/DebugData/") + Time.GetDate().ToString() + "/Playtest" + Time.ToString() + FString(".PLog");
+
 	if (!FPaths::FileExists(CompletePath))
 	{
 		FString ContentToSave = "Game Count: "; ContentToSave.AppendInt(GameCount);
@@ -49,8 +51,8 @@ void UDebugDataGrabber::WriteAllSavedDebugDataToFile()
 		for (auto Data : OverallCardsChosen)
 		{
 			ContentToSave.Append("\n Card Upgrade Picked: " + Data.Key);
-			ContentToSave.Append("\t Card Picked: " + Data.Value.TimesCardPicked + *"\n");
-			ContentToSave.Append("\t Card Won: " + Data.Value.TimesWonWithCard) + *"\n";
+			ContentToSave.Append("\n\t Card Picked: " + Data.Value.TimesCardPicked);
+			ContentToSave.Append("\t Card Won: " + Data.Value.TimesWonWithCard);
 		}
 		FFileHelper::SaveStringToFile(ContentToSave, *CompletePath, FFileHelper::EEncodingOptions::AutoDetect, &IFileManager::Get(), EFileWrite::FILEWRITE_None);
 	}
