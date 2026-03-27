@@ -47,7 +47,7 @@ void UDebugDataGrabber::WriteAllSavedDebugDataToFile()
 	{
 		FString ContentToSave = "Game Count: ";		ContentToSave.AppendInt(GameCount);		ContentToSave	+= "\n";
 		ContentToSave +=		"Round Count: ";	ContentToSave.AppendInt(RoundCounter);	ContentToSave	+= "\n";
-		//ContentToSave +=		"Player Count: ";	ContentToSave.AppendInt((int)GetWorld()->PlayerNum);
+		//ContentToSave +=		"Player Count: ";	ContentToSave.AppendInt(GetWorld()->PlayerNum);
 		
 		
 		for (auto Data : OverallCardsChosen)
@@ -81,7 +81,7 @@ void UDebugDataGrabber::UpdateCardDataForPlayerOnRoundBasis(FCardStats Card, int
 	
 
 	if (DebugData[PlayerID-1].PlayerCards.Find(Card.UpgradeParameters.UpgradeName))
-		DebugData[PlayerID-1].PlayerCards.Find(Card.UpgradeParameters.UpgradeName)->TimesCardPicked++;
+		DebugData[PlayerID-1].PlayerCards.Find(Card.UpgradeParameters.UpgradeName)->TimesCardPicked = 1;
 		
 	if (PlayerWon)
 	{
