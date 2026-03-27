@@ -45,14 +45,15 @@ void UDebugDataGrabber::WriteAllSavedDebugDataToFile()
 
 	if (!FPaths::FileExists(CompletePath))
 	{
-		FString ContentToSave = "Game Count: "; ContentToSave.AppendInt(GameCount);
-		ContentToSave += "\n";
+		FString ContentToSave = "Game Count: ";		ContentToSave.AppendInt(GameCount);		ContentToSave	+= "\n";
+		ContentToSave +=		"Round Count: ";	ContentToSave.AppendInt(RoundCounter);	ContentToSave	+= "\n";
+		
 		
 		for (auto Data : OverallCardsChosen)
 		{
 			ContentToSave.Append("\n Card Upgrade Picked: " + Data.Key);
-			ContentToSave.Append("\n\t Card Picked: " + Data.Value.TimesCardPicked);
-			ContentToSave.Append("\t Card Won: " + Data.Value.TimesWonWithCard);
+			ContentToSave.Append("\n\t Card Picked: "); ContentToSave.AppendInt(Data.Value.TimesCardPicked);
+			ContentToSave.Append("\t Card Won: ");		ContentToSave.AppendInt(Data.Value.TimesWonWithCard);
 		}
 		FFileHelper::SaveStringToFile(ContentToSave, *CompletePath, FFileHelper::EEncodingOptions::AutoDetect, &IFileManager::Get(), EFileWrite::FILEWRITE_None);
 	}
@@ -74,7 +75,6 @@ void UDebugDataGrabber::ClearLogSavedData()
 
 void UDebugDataGrabber::UpdateCardDataForPlayerOnRoundBasis(FCardStats Card, int PlayerID, bool PlayerWon)
 {
-	WriteAllSavedDebugDataToFile();
 	if (PlayerID == 1)
 		RoundCounter++;
 	
@@ -100,7 +100,6 @@ void UDebugDataGrabber::UpdateCardDataForPlayerOnRoundBasis(FCardStats Card, int
 
 void UDebugDataGrabber::OnGameEndPrintAllData()
 {
-	GameCount++;
 	UE_LOG(LogClass, Error, TEXT("Game: %i | Rounds Played: %i"),GameCount, RoundCounter);
 	
 	FetchAllAvailableDebugData();
@@ -110,6 +109,7 @@ void UDebugDataGrabber::OnGameEndPrintAllData()
 		UE_LOG(LogClass, Error, TEXT("Card: %s, has been picked %i times and has won %i times"), *CardsChosen.Key, CardsChosen.Value.TimesCardPicked, CardsChosen.Value.TimesWonWithCard);
 	}
 	WriteAllSavedDebugDataToFile();
+	GameCount++;
 }
 
 void UDebugDataGrabber::FetchAllAvailableDebugData()

@@ -65,7 +65,7 @@ class SPELLFIELD_API UDebugDataGrabber : public UGameInstanceSubsystem
 	/**Writes all debug data to a specified file
 	* @param FileName specifies the file the data should be saved as
 	*/
-	UFUNCTION(BlueprintCallable, meta=(DevelopmentOnly))
+	UFUNCTION(BlueprintCallable)
 	void WriteAllSavedDebugDataToFile();
 
 	/**Clears all data from the debug variables*/
@@ -76,10 +76,10 @@ class SPELLFIELD_API UDebugDataGrabber : public UGameInstanceSubsystem
 	UFUNCTION(BlueprintCallable, meta=(DevelopmentOnly))
 	void UpdateCardDataForPlayerOnRoundBasis(FCardStats Card, int PlayerID, bool PlayerWon);
 
-	UFUNCTION(BlueprintCallable, meta=(DevelopmentOnly))
+	UFUNCTION(BlueprintCallable)
 	void OnGameEndPrintAllData();
 
-	UFUNCTION(meta=(DevelopmentOnly))
+	UFUNCTION()
 	void FetchAllAvailableDebugData();
 	
 };
