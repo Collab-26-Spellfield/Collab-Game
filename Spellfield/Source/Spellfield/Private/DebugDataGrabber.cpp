@@ -47,6 +47,7 @@ void UDebugDataGrabber::WriteAllSavedDebugDataToFile()
 	{
 		FString ContentToSave = "Game Count: ";		ContentToSave.AppendInt(GameCount);		ContentToSave	+= "\n";
 		ContentToSave +=		"Round Count: ";	ContentToSave.AppendInt(RoundCounter);	ContentToSave	+= "\n";
+		//ContentToSave +=		"Player Count: ";	ContentToSave.AppendInt((int)GetWorld()->PlayerNum);
 		
 		
 		for (auto Data : OverallCardsChosen)
@@ -114,6 +115,7 @@ void UDebugDataGrabber::OnGameEndPrintAllData()
 
 void UDebugDataGrabber::FetchAllAvailableDebugData()
 {
+	OverallCardsChosen.Empty();
 	for (int i = 0; i < _countof(DebugData); ++i)
 	{
 		for (auto CardsChosen: DebugData[i].PlayerCards)
