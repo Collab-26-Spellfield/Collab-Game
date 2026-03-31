@@ -76,7 +76,7 @@ void UDebugDataGrabber::ClearLogSavedData()
 
 void UDebugDataGrabber::UpdateCardDataForPlayerOnRoundBasis(FCardStats Card, int PlayerID, bool PlayerWon)
 {
-	if (PlayerID == 1)
+	if (PlayerID == 0)
 		RoundCounter++;
 	
 
@@ -85,6 +85,7 @@ void UDebugDataGrabber::UpdateCardDataForPlayerOnRoundBasis(FCardStats Card, int
 		
 	if (PlayerWon)
 	{
+		//Debug me to check if a player owns the same card but stacked as we probably don't want to increase x amount of 1 card if multiple are owned
 		for (auto& Element : DebugData[PlayerID].PlayerCards)
 		{
 			Element.Value.TimesWonWithCard++;
