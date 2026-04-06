@@ -76,25 +76,26 @@ void UDebugDataGrabber::ClearLogSavedData()
 
 void UDebugDataGrabber::UpdateCardDataForPlayerOnRoundBasis(FCardStats Card, int PlayerID, bool PlayerWon)
 {
-	if (PlayerID == 1)
+	if (PlayerID == 0)
 		RoundCounter++;
 	
 
-	if (DebugData[PlayerID-1].PlayerCards.Find(Card.UpgradeParameters.UpgradeName))
-		DebugData[PlayerID-1].PlayerCards.Find(Card.UpgradeParameters.UpgradeName)->TimesCardPicked = 1;
+	if (DebugData[PlayerID].PlayerCards.Find(Card.UpgradeParameters.UpgradeName))
+		DebugData[PlayerID].PlayerCards.Find(Card.UpgradeParameters.UpgradeName)->TimesCardPicked = 1;
 		
 	if (PlayerWon)
 	{
-		for (auto& Element : DebugData[PlayerID - 1].PlayerCards)
+		//Debug me to check if a player owns the same card but stacked as we probably don't want to increase x amount of 1 card if multiple are owned
+		for (auto& Element : DebugData[PlayerID].PlayerCards)
 		{
 			Element.Value.TimesWonWithCard++;
 			UE_LOG(LogTemp, Warning, TEXT("The card %s has won %i times and has been picked %i times by PlayerID: %i on round %i"), *Element.Key, Element.Value.TimesWonWithCard, Element.Value.TimesCardPicked, PlayerID, RoundCounter);
 		}
 	}
 	
-	if (!DebugData[PlayerID-1].PlayerCards.Find(Card.UpgradeParameters.UpgradeName))
+	if (!DebugData[PlayerID].PlayerCards.Find(Card.UpgradeParameters.UpgradeName))
 	{
-		DebugData[PlayerID-1].PlayerCards.Add(Card.UpgradeParameters.UpgradeName).TimesCardPicked++;
+		DebugData[PlayerID].PlayerCards.Add(Card.UpgradeParameters.UpgradeName).TimesCardPicked++;
 	}
 	
 }
