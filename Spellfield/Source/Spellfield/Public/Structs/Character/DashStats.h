@@ -14,9 +14,6 @@ struct FDashStats
 	float DashSpeed = 0.0f;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "DashStats")
-	float DashCount = 0.0f;
-
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "DashStats")
 	float DashDistance = 0.0f;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "DashStats")
