@@ -2,12 +2,31 @@
 
 
 #include "DebugDataGrabber.h"
-#include <fstream>
-#include <iostream>
 #include <string>
 
-#include "HttpModule.h"
 
+UDebugDataGrabber::~UDebugDataGrabber()
+{
+	FetchAllAvailableDebugData();
+	//stops from writing empty files
+	if (!OverallCardsChosen.IsEmpty())
+	{
+		WriteAllSavedDebugDataToFile();
+	}
+}
+
+void UDebugDataGrabber::SetGameModeName(FString GameModeName)
+{
+	GameModesPlayed.Add(GameModeName);
+	RoundCounter++;
+	CardsDisplayed.CardsAvailable.Empty();
+}
+
+void UDebugDataGrabber::AddCardThatCanBeSelected_DEBUG(FString AvailableCard)
+{
+	CardsDisplayed.CardsAvailable.Add(AvailableCard);
+	CardsAvailableAtEachRound.Add(RoundCounter,CardsDisplayed);
+}
 
 void UDebugDataGrabber::LogDebugData(FDebugLogData DataToPull)
 {
@@ -45,16 +64,52 @@ void UDebugDataGrabber::WriteAllSavedDebugDataToFile()
 
 	if (!FPaths::FileExists(CompletePath))
 	{
-		FString ContentToSave = "Game Count: ";		ContentToSave.AppendInt(GameCount);		ContentToSave	+= "\n";
-		ContentToSave +=		"Round Count: ";	ContentToSave.AppendInt(RoundCounter);	ContentToSave	+= "\n";
+		FString ContentToSave;
+		//FString ContentToSave = "Game Count: ";		ContentToSave.AppendInt(GameCount);		ContentToSave	+= "\n";
+		//FString ContentToSave=		"Round Count: ";	ContentToSave.AppendInt(RoundCounter);	ContentToSave	+= "\n";
 		//ContentToSave +=		"Player Count: ";	ContentToSave.AppendInt(GetWorld()->PlayerNum);
 		
 		
-		for (auto Data : OverallCardsChosen)
+		for (auto Data : OverallCardsChosen) //All card stats and times picked
 		{
 			ContentToSave.Append("\n Card Upgrade Picked: " + Data.Key);
-			ContentToSave.Append("\n\t Card Picked: "); ContentToSave.AppendInt(Data.Value.TimesCardPicked);
-			ContentToSave.Append("\t Card Won: ");		ContentToSave.AppendInt(Data.Value.TimesWonWithCard);
+			ContentToSave.Append("\n\t Card Picked: " + FString::FromInt(Data.Value.TimesCardPicked));
+			ContentToSave.Append("\t Card Won: " + FString::FromInt(Data.Value.TimesWonWithCard));
+		}
+
+		ContentToSave.Append("\n\n Card Availability per Round:\n\n");
+		
+		//writes all cards available at a given round
+		for (auto Data : CardsAvailableAtEachRound)
+		{
+			ContentToSave.Append("\n\n Cards Available at round "); ContentToSave.AppendInt(Data.Key); ContentToSave += ":\n";
+			for (int i = 0; i < Data.Value.CardsAvailable.Num(); i++)
+				ContentToSave.Append("\t- " + Data.Value.CardsAvailable[i] + "\n");
+
+		}
+
+		ContentToSave.Append("\n\n PlayerData Across All Rounds: \n\n");
+		for (int i = 0; i < RoundCounter; i++)
+		{
+			ContentToSave.Append("Round: " + FString::FromInt(i));
+			ContentToSave.Append("\nGamemode Played: " + GameModesPlayed[i] + "\n");
+			for (auto Data : DebugData)
+			{
+				if (Data.PlayerID != -1)
+				{
+					ContentToSave.Append("\n\n\t[Data for PlayerID]: " + FString::FromInt(Data.PlayerID));
+					ContentToSave.Append("\tPlaced in" + FString::FromInt(Data.PosInGame[RoundCounter-1]) + " Position" + "\n");
+					ContentToSave.Append("\tScore" + FString::FromInt(Data.Score[RoundCounter-1]) + "\n");
+					ContentToSave.Append("\n\tUpgrade Cards Obtained: \n\n");
+					for (auto DataPC : Data.PlayerCards)
+					{
+						ContentToSave.Append("\t-" + DataPC.Key + "\n");
+						//ContentToSave.Append(DataPC.Value.)
+					}
+					ContentToSave.Append("\n");
+				}
+			}
+				
 		}
 		FFileHelper::SaveStringToFile(ContentToSave, *CompletePath, FFileHelper::EEncodingOptions::AutoDetect, &IFileManager::Get(), EFileWrite::FILEWRITE_None);
 	}
@@ -76,9 +131,7 @@ void UDebugDataGrabber::ClearLogSavedData()
 
 void UDebugDataGrabber::UpdateCardDataForPlayerOnRoundBasis(FCardStats Card, int PlayerID, bool PlayerWon)
 {
-	if (PlayerID == 0)
-		RoundCounter++;
-	
+	DebugData[PlayerID].PlayerID = PlayerID;
 
 	if (DebugData[PlayerID].PlayerCards.Find(Card.UpgradeParameters.UpgradeName))
 		DebugData[PlayerID].PlayerCards.Find(Card.UpgradeParameters.UpgradeName)->TimesCardPicked = 1;
@@ -111,6 +164,7 @@ void UDebugDataGrabber::OnGameEndPrintAllData()
 		UE_LOG(LogClass, Error, TEXT("Card: %s, has been picked %i times and has won %i times"), *CardsChosen.Key, CardsChosen.Value.TimesCardPicked, CardsChosen.Value.TimesWonWithCard);
 	}
 	WriteAllSavedDebugDataToFile();
+	OverallCardsChosen.Empty();
 	GameCount++;
 }
 
@@ -131,4 +185,14 @@ void UDebugDataGrabber::FetchAllAvailableDebugData()
 		}
 		
 	}
+}
+
+void UDebugDataGrabber::SetPlayerScore_DEBUG(int ID, int Score)
+{
+	DebugData[ID].Score.Add(Score);
+}
+
+void UDebugDataGrabber::SetPlayerPosInGame_DEBUG(int ID, int Pos)
+{
+	DebugData[ID].PosInGame.Add(Pos);
 }

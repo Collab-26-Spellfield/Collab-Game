@@ -1,0 +1,135 @@
+
+ Card Upgrade Picked: Lifesteal
+	 Card Picked: 2	 Card Won: 2
+ Card Upgrade Picked: Glass Cannon
+	 Card Picked: 1	 Card Won: 1
+ Card Upgrade Picked: Sap
+	 Card Picked: 1	 Card Won: 0
+ Card Upgrade Picked: Regeneration
+	 Card Picked: 1	 Card Won: 2
+
+ Card Availability per Round:
+
+
+
+ Cards Available at round 2:
+	- Regeneration
+	- Nimble
+	- Quick Strike
+	- Tank
+	- Lifesteal
+
+
+ Cards Available at round 3:
+	- Regeneration
+	- Bouncy
+	- Tank
+	- Glass Cannon
+	- Glass Cannon
+
+
+ Cards Available at round 4:
+	- Sap
+	- Bouncy
+	- Arcane Imbuement
+	- Tank
+	- Lifesteal
+
+
+ PlayerData Across All Rounds: 
+
+Round: 0
+Gamemode Played: 
+
+
+	[Data for PlayerID]: 0
+	 Upgrade Cards Obtained: 
+
+	-Lifesteal
+	-Glass Cannon
+	-Sap
+
+
+
+	[Data for PlayerID]: 1
+	 Upgrade Cards Obtained: 
+
+	-Regeneration
+	-Lifesteal
+
+Round: 1
+Gamemode Played: Catch The Spirits
+
+
+	[Data for PlayerID]: 0
+	 Upgrade Cards Obtained: 
+
+	-Lifesteal
+	-Glass Cannon
+	-Sap
+
+
+
+	[Data for PlayerID]: 1
+	 Upgrade Cards Obtained: 
+
+	-Regeneration
+	-Lifesteal
+
+Round: 2
+Gamemode Played: Catch The Spirits
+
+
+	[Data for PlayerID]: 0
+	 Upgrade Cards Obtained: 
+
+	-Lifesteal
+	-Glass Cannon
+	-Sap
+
+
+
+	[Data for PlayerID]: 1
+	 Upgrade Cards Obtained: 
+
+	-Regeneration
+	-Lifesteal
+
+Round: 3
+Gamemode Played: Control
+
+
+	[Data for PlayerID]: 0
+	 Upgrade Cards Obtained: 
+
+	-Lifesteal
+	-Glass Cannon
+	-Sap
+
+
+
+	[Data for PlayerID]: 1
+	 Upgrade Cards Obtained: 
+
+	-Regeneration
+	-Lifesteal
+
+Round: 4
+Gamemode Played: Bounty
+
+
+	[Data for PlayerID]: 0
+	 Upgrade Cards Obtained: 
+
+	-Lifesteal
+	-Glass Cannon
+	-Sap
+
+
+
+	[Data for PlayerID]: 1
+	 Upgrade Cards Obtained: 
+
+	-Regeneration
+	-Lifesteal
+
