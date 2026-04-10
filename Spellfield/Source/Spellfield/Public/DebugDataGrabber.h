@@ -55,6 +55,14 @@ class SPELLFIELD_API UDebugDataGrabber : public UGameInstanceSubsystem
 	UPROPERTY()
 	int RoundCounter = 1;
 
+//use roundcounter-1 to index
+UPROPERTY()
+TArray<FString> GameModesPlayed;
+
+//Make new function for when cards are displayed to them get the data
+PROPERTY()
+TArray<FString> CardsAvailableAtCurrentRound;
+
 	UPROPERTY()
 	int GameCount = 1;
 	
