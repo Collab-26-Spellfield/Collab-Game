@@ -80,7 +80,7 @@ void UDebugDataGrabber::WriteAllSavedDebugDataToFile()
 		ContentToSave.Append("\n\n Card Availability per Round:\n\n");
 		
 		//writes all cards available at a given round
-		for (auto Data : CardsAvailableAtEachRound)
+		for (TPair<int, FCurrentCardsDisplayed> Data : CardsAvailableAtEachRound)
 		{
 			ContentToSave.Append("\n\n Cards Available at round "); ContentToSave.AppendInt(Data.Key); ContentToSave += ":\n";
 			for (int i = 0; i < Data.Value.CardsAvailable.Num(); i++)
@@ -89,23 +89,29 @@ void UDebugDataGrabber::WriteAllSavedDebugDataToFile()
 		}
 
 		ContentToSave.Append("\n\n PlayerData Across All Rounds: \n\n");
-		for (int i = 0; i < RoundCounter; i++)
+		for (int i = 0; i < RoundCounter-1; i++)
 		{
-			ContentToSave.Append("Round: " + FString::FromInt(i));
+			ContentToSave.Append("Round: " + FString::FromInt(i+1));
 			ContentToSave.Append("\nGamemode Played: " + GameModesPlayed[i] + "\n");
-			for (auto Data : DebugData)
+			for (FDebugLogData D_Data : DebugData)
 			{
-				if (Data.PlayerID != -1)
+				if (D_Data.PlayerID != -1)
 				{
-					ContentToSave.Append("\n\n\t[Data for PlayerID]: " + FString::FromInt(Data.PlayerID));
-					ContentToSave.Append("\tPlaced in" + FString::FromInt(Data.PosInGame[RoundCounter-1]) + " Position" + "\n");
-					ContentToSave.Append("\tScore" + FString::FromInt(Data.Score[RoundCounter-1]) + "\n");
+					ContentToSave.Append("\n\n\t[Data for PlayerID]: " + FString::FromInt(D_Data.PlayerID));
+					ContentToSave.Append("\n\tPlaced in " + FString::FromInt(D_Data.PositionInGame[i]) + " Position" + "\n");
+					ContentToSave.Append("\tScore: " + FString::FromInt(D_Data.PlayerScore[i]) + "\n");
 					ContentToSave.Append("\n\tUpgrade Cards Obtained: \n\n");
-					for (auto DataPC : Data.PlayerCards)
+					int j = 0;
+					for (auto DataPC : D_Data.PlayerCards)
 					{
-						ContentToSave.Append("\t-" + DataPC.Key + "\n");
+						if (j <= i)
+							ContentToSave.Append("\t-" + DataPC.Key + "\n");
+						else
+							break;
+						j++;
 						//ContentToSave.Append(DataPC.Value.)
 					}
+						
 					ContentToSave.Append("\n");
 				}
 			}
@@ -189,10 +195,10 @@ void UDebugDataGrabber::FetchAllAvailableDebugData()
 
 void UDebugDataGrabber::SetPlayerScore_DEBUG(int ID, int Score)
 {
-	DebugData[ID].Score.Add(Score);
+	DebugData[ID].PlayerScore.Add(Score);
 }
 
 void UDebugDataGrabber::SetPlayerPosInGame_DEBUG(int ID, int Pos)
 {
-	DebugData[ID].PosInGame.Add(Pos);
+	DebugData[ID].PositionInGame.Add(Pos);
 }

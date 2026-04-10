@@ -38,11 +38,11 @@ struct FDebugLogData : public FTableRowBase
 	UPROPERTY(BlueprintReadWrite)
 	int RoundsWon = 0;
 
-	UPROPERTY()
-	TArray<int> Score;
+	UPROPERTY(BlueprintReadWrite)
+	TArray<int> PlayerScore;
 
-	UPROPERTY()
-	TArray<int> PosInGame;
+	UPROPERTY(BlueprintReadWrite)
+	TArray<int> PositionInGame;
 	
 	UPROPERTY(BlueprintReadWrite)
 	FCardStats Stats;
