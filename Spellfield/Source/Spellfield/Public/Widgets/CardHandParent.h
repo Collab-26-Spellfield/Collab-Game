@@ -29,11 +29,9 @@ public:
 
 protected:
 
-
-
 	UFUNCTION(BlueprintNativeEvent, BlueprintCallable)
-	void InitializeCardHand(const TArray<FCardStats>& UpgradesToPresent);
-	void InitializeCardHand_Implementation(const TArray<FCardStats>& UpgradesToPresent);
+	void AddCards(const TArray<UCardParent*>& Cards);
+	void AddCards_Implementation(const TArray<UCardParent*>& Cards);
 
 	UFUNCTION(BlueprintNativeEvent)
 	void UpdateCardHandLayout();
@@ -42,7 +40,7 @@ protected:
 private:
 
 	UFUNCTION()
-	void PopulateCardHand(TArray<FCardStats> DesiredUpgrades);
+	void PopulateCards(TArray<UCardParent*> Cards);
 
 	UFUNCTION()
 	void UpdateCardPositionsInHand();
