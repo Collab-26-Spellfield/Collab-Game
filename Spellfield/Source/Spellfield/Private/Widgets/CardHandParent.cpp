@@ -2,11 +2,11 @@
 
 
 #include "Widgets/CardHandParent.h"
-#include "Widgets/New folder/UpgradeTarotCard.h"
+//#include "Widgets/New folder/UpgradeTarotCard.h"
 
-void UCardHandParent::InitializeCardHand_Implementation(const TArray<FCardStats>& UpgradesToPresent)
+void UCardHandParent::AddCards_Implementation(const TArray<UCardParent*>& Cards)
 {
-	PopulateCardHand(UpgradesToPresent);
+	PopulateCards(Cards);
 }
 
 void UCardHandParent::UpdateCardHandLayout_Implementation()
@@ -14,18 +14,11 @@ void UCardHandParent::UpdateCardHandLayout_Implementation()
 	UE_LOG(LogTemp, Warning, TEXT("UpdateCardHandLayout Not Imnplemented In Blueprint"));
 }
 
-void UCardHandParent::PopulateCardHand(TArray<FCardStats> DesiredUpgrades)
+void UCardHandParent::PopulateCards(TArray<UCardParent*> Cards)
 {
-	for (const auto& Upgrade: DesiredUpgrades)
+	for (const auto& Upgrade : Cards)
 	{
-		UCardParent* CreatedCardWidget = CreateWidget<UCardParent>(this, CreatedCardClass);
-
-		if (UUpgradeTarotCard* CreatedTarotCard = Cast<UUpgradeTarotCard>(CreatedCardWidget))
-		{
-			CreatedTarotCard->InitializeCard(Upgrade);
-		}
-
-		HeldUpgradeCards.Add(CreatedCardWidget);
+		HeldUpgradeCards.Add(Upgrade);
 	}
 
 	UpdateCardHandLayout();
