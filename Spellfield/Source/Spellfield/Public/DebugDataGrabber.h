@@ -59,7 +59,6 @@ class SPELLFIELD_API UDebugDataGrabber : public UGameInstanceSubsystem
 	GENERATED_BODY()
 
 public:
-	virtual ~UDebugDataGrabber() override;
 	
 	private:
 	UPROPERTY()

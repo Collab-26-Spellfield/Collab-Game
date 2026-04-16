@@ -1,0 +1,164 @@
+
+ Card Upgrade Picked: Quick Strike
+	 Card Picked: 1	 Card Won: 3
+ Card Upgrade Picked: Light Footed
+	 Card Picked: 1	 Card Won: 2
+ Card Upgrade Picked: Thwack!
+	 Card Picked: 1	 Card Won: 1
+ Card Upgrade Picked: Lifesteal
+	 Card Picked: 1	 Card Won: 3
+ Card Upgrade Picked: Bouncy
+	 Card Picked: 1	 Card Won: 2
+ Card Upgrade Picked: Power
+	 Card Picked: 1	 Card Won: 1
+ Card Upgrade Picked: Quick Fingers
+	 Card Picked: 1	 Card Won: 0
+
+
+
+ Card Availability per Round:
+
+
+ PlayerData Across All Rounds: 
+
+Round: 1
+Gamemode Played: Catch The Spirits
+
+
+	[Data for PlayerID]: 0
+	Placed in 2 Position
+	Score: 0
+
+	Upgrade Cards Obtained At Round End: 
+
+	-Quick Strike
+
+
+
+	[Data for PlayerID]: 1
+	Placed in 1 Position
+	Score: 10
+
+	Upgrade Cards Obtained At Round End: 
+
+	-Lifesteal
+
+Round: 2
+Gamemode Played: Point Capture
+
+
+	[Data for PlayerID]: 0
+	Placed in 2 Position
+	Score: 0
+
+	Upgrade Cards Obtained At Round End: 
+
+	-Quick Strike
+	-Light Footed
+
+
+
+	[Data for PlayerID]: 1
+	Placed in 1 Position
+	Score: 20
+
+	Upgrade Cards Obtained At Round End: 
+
+	-Lifesteal
+	-Bouncy
+
+Round: 3
+Gamemode Played: Kingpin
+		- Quick Strike
+		- Lifesteal
+		- Tank
+		- Sap
+		- Protective Bubble
+
+
+	[Data for PlayerID]: 0
+	Placed in 1 Position
+	Score: 10
+
+	Upgrade Cards Obtained At Round End: 
+
+	-Quick Strike
+	-Light Footed
+	-Thwack!
+
+
+
+	[Data for PlayerID]: 1
+	Placed in 2 Position
+	Score: 20
+
+	Upgrade Cards Obtained At Round End: 
+
+	-Lifesteal
+	-Bouncy
+	-Power
+
+Round: 4
+Gamemode Played: Point Capture
+		- Light Footed
+		- Bouncy
+		- Sap
+		- Pacifist
+		- Air Burst
+
+
+	[Data for PlayerID]: 0
+	Placed in 2 Position
+	Score: 10
+
+	Upgrade Cards Obtained At Round End: 
+
+	-Quick Strike
+	-Light Footed
+	-Thwack!
+
+
+
+	[Data for PlayerID]: 1
+	Placed in 1 Position
+	Score: 30
+
+	Upgrade Cards Obtained At Round End: 
+
+	-Lifesteal
+	-Bouncy
+	-Power
+	-Quick Fingers
+
+Round: 5
+Gamemode Played: Catch The Spirits
+		- Thwack!
+		- Nimble
+		- Sap
+		- Ranger
+		- Power
+
+
+	[Data for PlayerID]: 0
+	Placed in 2 Position
+	Score: 10
+
+	Upgrade Cards Obtained At Round End: 
+
+	-Quick Strike
+	-Light Footed
+	-Thwack!
+
+
+
+	[Data for PlayerID]: 1
+	Placed in 1 Position
+	Score: 50
+
+	Upgrade Cards Obtained At Round End: 
+
+	-Lifesteal
+	-Bouncy
+	-Power
+	-Quick Fingers
+

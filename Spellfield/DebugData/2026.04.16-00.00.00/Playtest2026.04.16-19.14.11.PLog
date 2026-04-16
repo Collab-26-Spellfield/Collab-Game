@@ -1,0 +1,143 @@
+
+
+ Cards Picked And Won Across All Rounds: 
+
+
+ Card Upgrade Picked: Arcane Imbuement
+	 Card Picked: 1	 Card Won: 2
+ Card Upgrade Picked: Quick Fingers
+	 Card Picked: 1	 Card Won: 1
+ Card Upgrade Picked: Light Footed
+	 Card Picked: 1	 Card Won: 0
+ Card Upgrade Picked: Thwack!
+	 Card Picked: 1	 Card Won: 2
+ Card Upgrade Picked: Lifesteal
+	 Card Picked: 1	 Card Won: 1
+ Card Upgrade Picked: Slow Cast
+	 Card Picked: 1	 Card Won: 0
+
+
+Data Across All Rounds: 
+
+Round: 1
+Gamemode Played: Control
+
+
+ Card Availability At Round End:
+	- Arcane Imbuement
+	- Thwack!
+	- Lifesteal
+	- Lifesteal
+	- Lifesteal
+
+
+[Data for PlayerID : 0]
+	Placed in Position 2
+	Score: 0
+
+	Upgrade Cards Player Has Obtained: 
+
+
+	-Arcane Imbuement(End of Round Pick)
+
+
+[Data for PlayerID : 1]
+	Placed in Position 1
+	Score: 10
+
+	Upgrade Cards Player Has Obtained: 
+
+
+	-Thwack!(End of Round Pick)
+Round: 2
+Gamemode Played: Death Match
+
+
+ Card Availability At Round End:
+	- Quick Fingers
+	- Ranger
+	- Arcane Imbuement
+	- Sap
+	- Lifesteal
+
+
+[Data for PlayerID : 0]
+	Placed in Position 2
+	Score: 0
+
+	Upgrade Cards Player Has Obtained: 
+
+
+	-Arcane Imbuement
+	-Quick Fingers(End of Round Pick)
+
+
+[Data for PlayerID : 1]
+	Placed in Position 1
+	Score: 20
+
+	Upgrade Cards Player Has Obtained: 
+
+
+	-Thwack!
+	-Lifesteal(End of Round Pick)
+Round: 3
+Gamemode Played: Point Capture
+
+
+ Card Availability At Round End:
+	- Light Footed
+	- Glass Cannon
+	- Light Footed
+	- Slow Cast
+	- Air Burst
+
+
+[Data for PlayerID : 0]
+	Placed in Position 2
+	Score: 0
+
+	Upgrade Cards Player Has Obtained: 
+
+
+	-Arcane Imbuement
+	-Quick Fingers
+	-Light Footed(End of Round Pick)
+
+
+[Data for PlayerID : 1]
+	Placed in Position 1
+	Score: 30
+
+	Upgrade Cards Player Has Obtained: 
+
+
+	-Thwack!
+	-Lifesteal
+	-Slow Cast(End of Round Pick)
+Round: 4
+Gamemode Played: Blessed Crown
+
+
+[Data for PlayerID : 0]
+	Placed in Position 2
+	Score: 0
+
+	Upgrade Cards Player Has Obtained: 
+
+
+	-Arcane Imbuement
+	-Quick Fingers
+	-Light Footed(End of Round Pick)
+
+
+[Data for PlayerID : 1]
+	Placed in Position 1
+	Score: 40
+
+	Upgrade Cards Player Has Obtained: 
+
+
+	-Thwack!
+	-Lifesteal
+	-Slow Cast(End of Round Pick)

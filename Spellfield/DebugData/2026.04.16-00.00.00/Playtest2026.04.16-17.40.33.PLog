@@ -1,0 +1,114 @@
+
+ Card Upgrade Picked: Bolt
+	 Card Picked: 1	 Card Won: 2
+ Card Upgrade Picked: Air Burst
+	 Card Picked: 1	 Card Won: 1
+ Card Upgrade Picked: Lifesteal
+	 Card Picked: 2	 Card Won: 2
+ Card Upgrade Picked: Arcane Imbuement
+	 Card Picked: 1	 Card Won: 1
+ Card Upgrade Picked: Pacifist
+	 Card Picked: 1	 Card Won: 0
+
+ Card Availability per Round:
+
+
+
+ Cards Available at round 1:
+	- Quick Strike
+	- Heavy Staff
+	- Slow Cast
+	- Lifesteal
+	- Bolt
+
+
+ Cards Available at round 2:
+	- Protective Bubble
+	- Rapid
+	- Regeneration
+	- Air Burst
+	- Arcane Imbuement
+
+
+ Cards Available at round 3:
+	- Sap
+	- Quick Strike
+	- Arcane Imbuement
+	- Pacifist
+	- Lifesteal
+
+
+ PlayerData Across All Rounds: 
+
+Round: 1
+Gamemode Played: Blessed Crown
+
+
+	[Data for PlayerID]: 0
+	Placed in 2 Position
+	Score: 0
+
+	Upgrade Cards Obtained: 
+
+	-Bolt
+
+
+
+	[Data for PlayerID]: 1
+	Placed in 1 Position
+	Score: 10
+
+	Upgrade Cards Obtained: 
+
+	-Lifesteal
+
+Round: 2
+Gamemode Played: Kingpin
+
+
+	[Data for PlayerID]: 0
+	Placed in 2 Position
+	Score: 0
+
+	Upgrade Cards Obtained: 
+
+	-Bolt
+	-Air Burst
+
+
+
+	[Data for PlayerID]: 1
+	Placed in 1 Position
+	Score: 20
+
+	Upgrade Cards Obtained: 
+
+	-Lifesteal
+	-Arcane Imbuement
+
+Round: 3
+Gamemode Played: Bounty
+
+
+	[Data for PlayerID]: 0
+	Placed in 2 Position
+	Score: 0
+
+	Upgrade Cards Obtained: 
+
+	-Bolt
+	-Air Burst
+	-Lifesteal
+
+
+
+	[Data for PlayerID]: 1
+	Placed in 1 Position
+	Score: 30
+
+	Upgrade Cards Obtained: 
+
+	-Lifesteal
+	-Arcane Imbuement
+	-Pacifist
+

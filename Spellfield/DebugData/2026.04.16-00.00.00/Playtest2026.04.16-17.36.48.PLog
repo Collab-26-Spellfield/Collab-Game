@@ -1,0 +1,113 @@
+
+ Card Upgrade Picked: Ranger
+	 Card Picked: 1	 Card Won: 2
+ Card Upgrade Picked: Speedy
+	 Card Picked: 1	 Card Won: 1
+ Card Upgrade Picked: Arcane Imbuement
+	 Card Picked: 1	 Card Won: 2
+ Card Upgrade Picked: Bouncy
+	 Card Picked: 1	 Card Won: 1
+ Card Upgrade Picked: Glass Cannon
+	 Card Picked: 1	 Card Won: 0
+
+ Card Availability per Round:
+
+
+
+ Cards Available at round 1:
+	- Arcane Imbuement
+	- Light Footed
+	- Air Burst
+	- Sap
+	- Ranger
+
+
+ Cards Available at round 2:
+	- Bolt
+	- Light Footed
+	- Regeneration
+	- Bouncy
+	- Speedy
+
+
+ Cards Available at round 3:
+	- Heavy Staff
+	- Slow Cast
+	- Sap
+	- Glass Cannon
+	- Speedy
+
+
+ PlayerData Across All Rounds: 
+
+Round: 1
+Gamemode Played: Control
+
+
+	[Data for PlayerID]: 0
+	Placed in 2 Position
+	Score: 0
+
+	Upgrade Cards Obtained: 
+
+	-Ranger
+
+
+
+	[Data for PlayerID]: 1
+	Placed in 1 Position
+	Score: 10
+
+	Upgrade Cards Obtained: 
+
+	-Arcane Imbuement
+
+Round: 2
+Gamemode Played: Catch The Spirits
+
+
+	[Data for PlayerID]: 0
+	Placed in 2 Position
+	Score: 0
+
+	Upgrade Cards Obtained: 
+
+	-Ranger
+	-Speedy
+
+
+
+	[Data for PlayerID]: 1
+	Placed in 1 Position
+	Score: 20
+
+	Upgrade Cards Obtained: 
+
+	-Arcane Imbuement
+	-Bouncy
+
+Round: 3
+Gamemode Played: Kingpin
+
+
+	[Data for PlayerID]: 0
+	Placed in 2 Position
+	Score: 0
+
+	Upgrade Cards Obtained: 
+
+	-Ranger
+	-Speedy
+
+
+
+	[Data for PlayerID]: 1
+	Placed in 1 Position
+	Score: 30
+
+	Upgrade Cards Obtained: 
+
+	-Arcane Imbuement
+	-Bouncy
+	-Glass Cannon
+
