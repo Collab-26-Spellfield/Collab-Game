@@ -1,0 +1,116 @@
+
+ Card Upgrade Picked: Prepared Strike
+	 Card Picked: 1	 Card Won: 2
+ Card Upgrade Picked: Thwack!
+	 Card Picked: 1	 Card Won: 1
+ Card Upgrade Picked: Quick Fingers
+	 Card Picked: 1	 Card Won: 0
+ Card Upgrade Picked: Sap
+	 Card Picked: 1	 Card Won: 2
+ Card Upgrade Picked: Regeneration
+	 Card Picked: 1	 Card Won: 1
+ Card Upgrade Picked: Quick Strike
+	 Card Picked: 1	 Card Won: 0
+
+ Card Availability per Round:
+
+
+
+ Cards Available at round 1:
+	- Slow Cast
+	- Prepared Strike
+	- Air Burst
+	- Regeneration
+	- Sap
+
+
+ Cards Available at round 2:
+	- Regeneration
+	- Thwack!
+	- Ranger
+	- Regeneration
+	- Healthy
+
+
+ Cards Available at round 3:
+	- Quick Strike
+	- Arcane Imbuement
+	- Nimble
+	- Light Footed
+	- Quick Fingers
+
+
+ PlayerData Across All Rounds: 
+
+Round: 1
+Gamemode Played: Death Match
+
+
+	[Data for PlayerID]: 0
+	Placed in 1 Position
+	Score: 10
+
+	Upgrade Cards Obtained: 
+
+	-Prepared Strike
+
+
+
+	[Data for PlayerID]: 1
+	Placed in 2 Position
+	Score: 0
+
+	Upgrade Cards Obtained: 
+
+	-Sap
+
+Round: 2
+Gamemode Played: Bounty
+
+
+	[Data for PlayerID]: 0
+	Placed in 1 Position
+	Score: 20
+
+	Upgrade Cards Obtained: 
+
+	-Prepared Strike
+	-Thwack!
+
+
+
+	[Data for PlayerID]: 1
+	Placed in 2 Position
+	Score: 0
+
+	Upgrade Cards Obtained: 
+
+	-Sap
+	-Regeneration
+
+Round: 3
+Gamemode Played: Blessed Crown
+
+
+	[Data for PlayerID]: 0
+	Placed in 1 Position
+	Score: 30
+
+	Upgrade Cards Obtained: 
+
+	-Prepared Strike
+	-Thwack!
+	-Quick Fingers
+
+
+
+	[Data for PlayerID]: 1
+	Placed in 2 Position
+	Score: 0
+
+	Upgrade Cards Obtained: 
+
+	-Sap
+	-Regeneration
+	-Quick Strike
+

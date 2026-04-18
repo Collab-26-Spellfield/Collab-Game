@@ -1,0 +1,116 @@
+
+ Card Upgrade Picked: Unencumbered
+	 Card Picked: 1	 Card Won: 2
+ Card Upgrade Picked: Lifesteal
+	 Card Picked: 1	 Card Won: 1
+ Card Upgrade Picked: Slow Cast
+	 Card Picked: 1	 Card Won: 0
+ Card Upgrade Picked: Arcane Imbuement
+	 Card Picked: 1	 Card Won: 2
+ Card Upgrade Picked: Bolt
+	 Card Picked: 1	 Card Won: 1
+ Card Upgrade Picked: Heavy Staff
+	 Card Picked: 1	 Card Won: 0
+
+ Card Availability per Round:
+
+
+
+ Cards Available at round 1:
+	- Light Footed
+	- Unencumbered
+	- Quick Fingers
+	- Arcane Imbuement
+	- Ranger
+
+
+ Cards Available at round 2:
+	- Light Footed
+	- Tank
+	- Sap
+	- Bolt
+	- Lifesteal
+
+
+ Cards Available at round 3:
+	- Lifesteal
+	- Ranger
+	- Protective Bubble
+	- Slow Cast
+	- Heavy Staff
+
+
+ PlayerData Across All Rounds: 
+
+Round: 1
+Gamemode Played: Catch The Spirits
+
+
+	[Data for PlayerID]: 0
+	Placed in 1 Position
+	Score: 10
+
+	Upgrade Cards Obtained: 
+
+	-Unencumbered
+
+
+
+	[Data for PlayerID]: 1
+	Placed in 2 Position
+	Score: 0
+
+	Upgrade Cards Obtained: 
+
+	-Arcane Imbuement
+
+Round: 2
+Gamemode Played: Control
+
+
+	[Data for PlayerID]: 0
+	Placed in 1 Position
+	Score: 20
+
+	Upgrade Cards Obtained: 
+
+	-Unencumbered
+	-Lifesteal
+
+
+
+	[Data for PlayerID]: 1
+	Placed in 2 Position
+	Score: 0
+
+	Upgrade Cards Obtained: 
+
+	-Arcane Imbuement
+	-Bolt
+
+Round: 3
+Gamemode Played: Death Match
+
+
+	[Data for PlayerID]: 0
+	Placed in 1 Position
+	Score: 30
+
+	Upgrade Cards Obtained: 
+
+	-Unencumbered
+	-Lifesteal
+	-Slow Cast
+
+
+
+	[Data for PlayerID]: 1
+	Placed in 2 Position
+	Score: 0
+
+	Upgrade Cards Obtained: 
+
+	-Arcane Imbuement
+	-Bolt
+	-Heavy Staff
+
