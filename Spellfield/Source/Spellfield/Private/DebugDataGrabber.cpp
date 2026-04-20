@@ -5,6 +5,8 @@
 #include <string>
 
 
+void UDebugDataGrabber::SetWinnerID(int ID)	{ WinnerID = ID; }
+
 void UDebugDataGrabber::SetGameModeName(FString GameModeName)
 {
 	GameModesPlayed.Add(GameModeName);
@@ -56,22 +58,22 @@ void UDebugDataGrabber::WriteAllSavedDebugDataToFile()
 	{
 		FString ContentToSave;
 		//FString ContentToSave = "Game Count: ";		ContentToSave.AppendInt(GameCount);		ContentToSave	+= "\n";
-		//FString ContentToSave=		"Round Count: ";	ContentToSave.AppendInt(RoundCounter);	ContentToSave	+= "\n";
 		//ContentToSave +=		"Player Count: ";	ContentToSave.AppendInt(GetWorld()->PlayerNum);
 		
-		ContentToSave.Append("Cards Picked And Won Across All Rounds: \n\n");
-		for (auto Data : OverallCardsChosen) //All card stats and times picked
-		{
-			ContentToSave.Append("\n Card Upgrade Picked: " + Data.Key);
-			ContentToSave.Append("\n\t Card Picked: " + FString::FromInt(Data.Value.TimesCardPicked));
-			ContentToSave.Append("\t Card Won: " + FString::FromInt(Data.Value.TimesWonWithCard));
-		}
+		//ContentToSave.Append("Cards Picked And Won Across All Rounds: \n\n");
+		//for (auto Data : OverallCardsChosen) //All card stats and times picked
+		//{
+		//	ContentToSave.Append("\n Card Upgrade Picked: " + Data.Key);
+		//	ContentToSave.Append("\n\t Card Picked: " + FString::FromInt(Data.Value.TimesCardPicked));
+		//	ContentToSave.Append("\t Card Won: " + FString::FromInt(Data.Value.TimesWonWithCard));
+		//FString ContentToSave=		"Round Count: ";	ContentToSave.AppendInt(RoundCounter);	ContentToSave	+= "\n";
+		//}
 		
-		ContentToSave.Append("\n\n\nData Across All Rounds: \n\n");
+		//ContentToSave.Append("\n\n\nData Across All Rounds: \n\n");
 		for (int i = 0; i < RoundCounter; i++)
 		{
 			ContentToSave.Append("Round: " + FString::FromInt(i+1));
-			ContentToSave.Append("\nGamemode Played: " + GameModesPlayed[i] + "\n");
+			//ContentToSave.Append("\nGamemode Played: " + GameModesPlayed[i] + "\n");
 
 			FCurrentCardsDisplayed* CurrentCardsDisplayed = CardsAvailableAtEachRound.Find(i+1);
 
@@ -86,25 +88,24 @@ void UDebugDataGrabber::WriteAllSavedDebugDataToFile()
 			{
 				if (D_Data.PlayerID != -1)
 				{
-					ContentToSave.Append("\n\n[Data for PlayerID : " + FString::FromInt(D_Data.PlayerID) + "]");
-					ContentToSave.Append("\n\tPlaced in Position " + FString::FromInt(D_Data.PositionInGame[i]) + "\n");
-					ContentToSave.Append("\tScore: " + FString::FromInt(D_Data.PlayerScore[i]) + "\n");
-					ContentToSave.Append("\n\tUpgrade Cards Player Has Obtained: \n\n");
+					ContentToSave.Append("\n\nP" + FString::FromInt(D_Data.PlayerID+1) + ":");
+					//ContentToSave.Append("\n\tPlaced in Position " + FString::FromInt(D_Data.PositionInGame[i]) + "\n");
+					//ContentToSave.Append("\tScore: " + FString::FromInt(D_Data.PlayerScore[i]) + "\n");
+					//ContentToSave.Append("\n\tUpgrade Cards Player Has Obtained: \n\n");
 					int j = 0;
 					for (auto DataPC : D_Data.PlayerCards)
 					{
-						if (j <= i)
-							ContentToSave.Append("\n\t-" + DataPC.Key);
-						else
-							break;
+						if (j == i)
+							ContentToSave.Append(" " + DataPC.Key);
 						j++;
 					}
-					if (CurrentCardsDisplayed != nullptr)
-						ContentToSave.Append("\t(End of Round Pick)\n\n\n");
 				}
 			}
+			ContentToSave.Append("\n-----------------\n\n");
 				
 		}
+		ContentToSave.Append("\nGAME OVER: Winner - " + FString::FromInt(WinnerID+1));
+		ContentToSave.Append("\n\n=================");
 		FFileHelper::SaveStringToFile(ContentToSave, *CompletePath, FFileHelper::EEncodingOptions::AutoDetect, &IFileManager::Get(), EFileWrite::FILEWRITE_None);
 	}
 	else

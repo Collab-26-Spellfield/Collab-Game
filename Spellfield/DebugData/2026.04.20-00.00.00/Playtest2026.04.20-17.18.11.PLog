@@ -1,0 +1,99 @@
+Round: 1
+
+ Card Availability At Round End:
+	- Healthy
+	- Lingering Magic
+	- Mirror Image
+	- Ranger
+	- Lifesteal
+	- Speedy
+	- Prepared Strike
+
+
+P0: Speedy
+
+P1: Lingering Magic
+
+P2: Mirror Image
+
+P3: Healthy
+-----------------
+
+Round: 2
+
+ Card Availability At Round End:
+	- Sap
+	- Heavy Staff
+	- Healthy
+	- Protective Bubble
+	- Air Burst
+	- Light Footed
+	- Prepared Strike
+
+
+P0: Sap
+
+P1: Heavy Staff
+
+P2: Prepared Strike
+
+P3: Protective Bubble
+-----------------
+
+Round: 3
+
+ Card Availability At Round End:
+	- Poison
+	- Arcane Imbuement
+	- Protective Bubble
+	- Regeneration
+	- Regeneration
+	- Quick Fingers
+	- Air Burst
+
+
+P0: Quick Fingers
+
+P1: Poison
+
+P2: Air Burst
+
+P3: Sap
+-----------------
+
+Round: 4
+
+ Card Availability At Round End:
+	- Sap
+	- Bouncy
+	- Air Burst
+	- Ranger
+	- Air Burst
+	- Regeneration
+	- Mirror Image
+
+
+P0: Air Burst
+
+P1: Bouncy
+
+P2: Regeneration
+
+P3:
+-----------------
+
+Round: 5
+
+P0:
+
+P1:
+
+P2:
+
+P3:
+-----------------
+
+
+GAME OVER: Winner - 1
+
+=================
