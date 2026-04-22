@@ -50,6 +50,9 @@ struct FDebugLogData : public FTableRowBase
 	//card is the key and value is the number of times won with card
 	UPROPERTY(BlueprintReadWrite)
 	TMap<FString, FDebugPlayerCardData> PlayerCards;
+
+	UPROPERTY()
+	TArray<FString> CurrentCardPickedAtRound;
 	
 };
 

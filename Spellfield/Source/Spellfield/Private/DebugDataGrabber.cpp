@@ -77,6 +77,7 @@ void UDebugDataGrabber::WriteAllSavedDebugDataToFile()
 
 			FCurrentCardsDisplayed* CurrentCardsDisplayed = CardsAvailableAtEachRound.Find(i+1);
 
+			//All cards available to pick at given round
 			if (CurrentCardsDisplayed != nullptr)
 			{
 				ContentToSave.Append("\n\n Card Availability At Round End:\n");
@@ -84,6 +85,7 @@ void UDebugDataGrabber::WriteAllSavedDebugDataToFile()
 					ContentToSave.Append("\t- " + CurrentCardsDisplayed->CardsAvailable[j] + "\n");
 			}
 
+			//prints out picked card at a given round
 			for (FDebugLogData D_Data : DebugData)
 			{
 				if (D_Data.PlayerID != -1)
@@ -92,13 +94,17 @@ void UDebugDataGrabber::WriteAllSavedDebugDataToFile()
 					//ContentToSave.Append("\n\tPlaced in Position " + FString::FromInt(D_Data.PositionInGame[i]) + "\n");
 					//ContentToSave.Append("\tScore: " + FString::FromInt(D_Data.PlayerScore[i]) + "\n");
 					//ContentToSave.Append("\n\tUpgrade Cards Player Has Obtained: \n\n");
-					int j = 0;
-					for (auto DataPC : D_Data.PlayerCards)
-					{
-						if (j == i)
-							ContentToSave.Append(" " + DataPC.Key);
-						j++;
-					}
+					//int j = 0;
+					//TArray<FString> test = D_Data.PlayerCards.Array().IndexOfByKey();
+					//for (auto DataPC : D_Data.PlayerCards)
+					//{
+					//	if (j == i)
+					//		ContentToSave.Append(" " + DataPC.Key);
+					//	j++;
+					//}
+					if (i < D_Data.CurrentCardPickedAtRound.Max())
+						ContentToSave.Append(D_Data.CurrentCardPickedAtRound[i]);
+						
 				}
 			}
 			ContentToSave.Append("\n-----------------\n\n");
@@ -127,7 +133,8 @@ void UDebugDataGrabber::ClearLogSavedData()
 void UDebugDataGrabber::UpdateCardDataForPlayerOnRoundBasis(FCardStats Card, int PlayerID, bool PlayerWon)
 {
 	DebugData[PlayerID].PlayerID = PlayerID;
-
+	DebugData[PlayerID].CurrentCardPickedAtRound.Add(Card.UpgradeParameters.UpgradeName);
+	
 	if (DebugData[PlayerID].PlayerCards.Find(Card.UpgradeParameters.UpgradeName))
 		DebugData[PlayerID].PlayerCards.Find(Card.UpgradeParameters.UpgradeName)->TimesCardPicked = 1;
 		
