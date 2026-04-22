@@ -50,6 +50,9 @@ struct FDebugLogData : public FTableRowBase
 	//card is the key and value is the number of times won with card
 	UPROPERTY(BlueprintReadWrite)
 	TMap<FString, FDebugPlayerCardData> PlayerCards;
+
+	UPROPERTY()
+	TArray<FString> CurrentCardPickedAtRound;
 	
 };
 
@@ -61,6 +64,12 @@ class SPELLFIELD_API UDebugDataGrabber : public UGameInstanceSubsystem
 public:
 	
 	private:
+
+	int WinnerID = 0;
+
+	UFUNCTION(BlueprintCallable)
+	void SetWinnerID(int ID);
+	
 	UPROPERTY()
 	FDebugLogData DebugData[4]; //array set to match max player count of 4
 

@@ -1,0 +1,234 @@
+Cards Picked And Won Across All Rounds: 
+
+
+ Card Upgrade Picked: Lingering Magic
+	 Card Picked: 1	 Card Won: 4
+ Card Upgrade Picked: Poison
+	 Card Picked: 2	 Card Won: 3
+ Card Upgrade Picked: Parry
+	 Card Picked: 1	 Card Won: 2
+ Card Upgrade Picked: Chaotic Blast
+	 Card Picked: 2	 Card Won: 2
+ Card Upgrade Picked: Harnessed Power
+	 Card Picked: 1	 Card Won: 4
+ Card Upgrade Picked: Fireball
+	 Card Picked: 1	 Card Won: 3
+
+
+Data Across All Rounds: 
+
+Round: 1
+Gamemode Played: Death Match
+
+
+ Card Availability At Round End:
+	- Lingering Magic
+	- Mirror Image
+	- Lingering Magic
+	- Harnessed Power
+	- Mirror Image
+
+
+[Data for PlayerID : 0]
+	Placed in Position 2
+	Score: 0
+
+	Upgrade Cards Player Has Obtained: 
+
+
+	-Lingering Magic	(End of Round Pick)
+
+
+
+
+[Data for PlayerID : 1]
+	Placed in Position 1
+	Score: 10
+
+	Upgrade Cards Player Has Obtained: 
+
+
+	-Harnessed Power	(End of Round Pick)
+
+
+Round: 2
+Gamemode Played: Catch The Spirits
+
+
+ Card Availability At Round End:
+	- Mirror Image
+	- Fireball
+	- Lingering Magic
+	- Poison
+	- Poison
+
+
+[Data for PlayerID : 0]
+	Placed in Position 1
+	Score: 10
+
+	Upgrade Cards Player Has Obtained: 
+
+
+	-Lingering Magic
+	-Poison	(End of Round Pick)
+
+
+
+
+[Data for PlayerID : 1]
+	Placed in Position 2
+	Score: 10
+
+	Upgrade Cards Player Has Obtained: 
+
+
+	-Harnessed Power
+	-Fireball	(End of Round Pick)
+
+
+Round: 3
+Gamemode Played: Bounty
+
+
+ Card Availability At Round End:
+	- Lingering Magic
+	- Bounciest
+	- Fireball
+	- Parry
+	- Chaotic Blast
+
+
+[Data for PlayerID : 0]
+	Placed in Position 1
+	Score: 20
+
+	Upgrade Cards Player Has Obtained: 
+
+
+	-Lingering Magic
+	-Poison
+	-Parry	(End of Round Pick)
+
+
+
+
+[Data for PlayerID : 1]
+	Placed in Position 2
+	Score: 10
+
+	Upgrade Cards Player Has Obtained: 
+
+
+	-Harnessed Power
+	-Fireball
+	-Chaotic Blast	(End of Round Pick)
+
+
+Round: 4
+Gamemode Played: Domination
+
+
+ Card Availability At Round End:
+	- Poison
+	- Bounciest
+	- Parry
+	- Lingering Magic
+	- Harnessed Power
+
+
+[Data for PlayerID : 0]
+	Placed in Position 1
+	Score: 30
+
+	Upgrade Cards Player Has Obtained: 
+
+
+	-Lingering Magic
+	-Poison
+	-Parry
+	-Chaotic Blast	(End of Round Pick)
+
+
+
+
+[Data for PlayerID : 1]
+	Placed in Position 2
+	Score: 10
+
+	Upgrade Cards Player Has Obtained: 
+
+
+	-Harnessed Power
+	-Fireball
+	-Chaotic Blast
+	-Poison	(End of Round Pick)
+
+
+Round: 5
+Gamemode Played: Catch The Spirits
+
+
+ Card Availability At Round End:
+	- Parry
+	- Chaotic Blast
+	- Fireball
+	- Fireball
+	- Poison
+
+
+[Data for PlayerID : 0]
+	Placed in Position 2
+	Score: 30
+
+	Upgrade Cards Player Has Obtained: 
+
+
+	-Lingering Magic
+	-Poison
+	-Parry
+	-Chaotic Blast	(End of Round Pick)
+
+
+
+
+[Data for PlayerID : 1]
+	Placed in Position 1
+	Score: 20
+
+	Upgrade Cards Player Has Obtained: 
+
+
+	-Harnessed Power
+	-Fireball
+	-Chaotic Blast
+	-Poison	(End of Round Pick)
+
+
+Round: 6
+Gamemode Played: Blessed Crown
+
+
+[Data for PlayerID : 0]
+	Placed in Position 2
+	Score: 30
+
+	Upgrade Cards Player Has Obtained: 
+
+
+	-Lingering Magic
+	-Poison
+	-Parry
+	-Chaotic Blast
+
+[Data for PlayerID : 1]
+	Placed in Position 1
+	Score: 40
+
+	Upgrade Cards Player Has Obtained: 
+
+
+	-Harnessed Power
+	-Fireball
+	-Chaotic Blast
+	-Poison
