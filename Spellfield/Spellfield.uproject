@@ -228,26 +228,6 @@
 			"Enabled": false
 		},
 		{
-			"Name": "AnimationData",
-			"Enabled": false
-		},
-		{
-			"Name": "ControlRig",
-			"Enabled": false
-		},
-		{
-			"Name": "ControlRigModules",
-			"Enabled": false
-		},
-		{
-			"Name": "ControlRigSpline",
-			"Enabled": false
-		},
-		{
-			"Name": "IKRig",
-			"Enabled": false
-		},
-		{
 			"Name": "EngineCameras",
 			"Enabled": false
 		},
@@ -256,49 +236,11 @@
 			"Enabled": false
 		},
 		{
-			"Name": "SequencerAnimTools",
-			"Enabled": false
-		},
-		{
-			"Name": "UVEditor",
-			"Enabled": false
-		},
-		{
 			"Name": "GLTFExporter",
 			"Enabled": false
 		},
 		{
-			"Name": "Niagara",
-			"Enabled": false
-		},
-		{
-			"Name": "NiagaraSimCaching",
-			"Enabled": false
-		},
-		{
-			"Name": "InterchangeEditor",
-			"Enabled": false,
-			"SupportedTargetPlatforms": [
-				"Win64",
-				"Linux",
-				"Mac"
-			]
-		},
-		{
-			"Name": "Interchange",
-			"Enabled": false,
-			"SupportedTargetPlatforms": [
-				"Win64",
-				"Linux",
-				"Mac"
-			]
-		},
-		{
 			"Name": "MediaPlate",
-			"Enabled": false
-		},
-		{
-			"Name": "InterchangeTests",
 			"Enabled": false
 		},
 		{
