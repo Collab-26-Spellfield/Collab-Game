@@ -2,12 +2,23 @@
 
 
 #include "DebugDataGrabber.h"
-#include <fstream>
-#include <iostream>
 #include <string>
 
-#include "HttpModule.h"
 
+void UDebugDataGrabber::SetWinnerID(int ID)	{ WinnerID = ID; }
+
+void UDebugDataGrabber::SetGameModeName(FString GameModeName)
+{
+	GameModesPlayed.Add(GameModeName);
+	RoundCounter++;
+	CardsDisplayed.CardsAvailable.Empty();
+}
+
+void UDebugDataGrabber::AddCardThatCanBeSelected_DEBUG(FString AvailableCard)
+{
+	CardsDisplayed.CardsAvailable.Add(AvailableCard);
+	CardsAvailableAtEachRound.Add(RoundCounter,CardsDisplayed);
+}
 
 void UDebugDataGrabber::LogDebugData(FDebugLogData DataToPull)
 {
@@ -45,17 +56,62 @@ void UDebugDataGrabber::WriteAllSavedDebugDataToFile()
 
 	if (!FPaths::FileExists(CompletePath))
 	{
-		FString ContentToSave = "Game Count: ";		ContentToSave.AppendInt(GameCount);		ContentToSave	+= "\n";
-		ContentToSave +=		"Round Count: ";	ContentToSave.AppendInt(RoundCounter);	ContentToSave	+= "\n";
+		FString ContentToSave;
+		//FString ContentToSave = "Game Count: ";		ContentToSave.AppendInt(GameCount);		ContentToSave	+= "\n";
 		//ContentToSave +=		"Player Count: ";	ContentToSave.AppendInt(GetWorld()->PlayerNum);
 		
+		//ContentToSave.Append("Cards Picked And Won Across All Rounds: \n\n");
+		//for (auto Data : OverallCardsChosen) //All card stats and times picked
+		//{
+		//	ContentToSave.Append("\n Card Upgrade Picked: " + Data.Key);
+		//	ContentToSave.Append("\n\t Card Picked: " + FString::FromInt(Data.Value.TimesCardPicked));
+		//	ContentToSave.Append("\t Card Won: " + FString::FromInt(Data.Value.TimesWonWithCard));
+		//FString ContentToSave=		"Round Count: ";	ContentToSave.AppendInt(RoundCounter);	ContentToSave	+= "\n";
+		//}
 		
-		for (auto Data : OverallCardsChosen)
+		//ContentToSave.Append("\n\n\nData Across All Rounds: \n\n");
+		for (int i = 0; i < RoundCounter; i++)
 		{
-			ContentToSave.Append("\n Card Upgrade Picked: " + Data.Key);
-			ContentToSave.Append("\n\t Card Picked: "); ContentToSave.AppendInt(Data.Value.TimesCardPicked);
-			ContentToSave.Append("\t Card Won: ");		ContentToSave.AppendInt(Data.Value.TimesWonWithCard);
+			ContentToSave.Append("Round: " + FString::FromInt(i+1));
+			//ContentToSave.Append("\nGamemode Played: " + GameModesPlayed[i] + "\n");
+
+			FCurrentCardsDisplayed* CurrentCardsDisplayed = CardsAvailableAtEachRound.Find(i+1);
+
+			//All cards available to pick at given round
+			if (CurrentCardsDisplayed != nullptr)
+			{
+				ContentToSave.Append("\n\n Card Availability At Round End:\n");
+				for (int j = 0; j < CurrentCardsDisplayed->CardsAvailable.Num(); j++)
+					ContentToSave.Append("\t- " + CurrentCardsDisplayed->CardsAvailable[j] + "\n");
+			}
+
+			//prints out picked card at a given round
+			for (FDebugLogData D_Data : DebugData)
+			{
+				if (D_Data.PlayerID != -1)
+				{
+					ContentToSave.Append("\n\nP" + FString::FromInt(D_Data.PlayerID+1) + ":");
+					//ContentToSave.Append("\n\tPlaced in Position " + FString::FromInt(D_Data.PositionInGame[i]) + "\n");
+					//ContentToSave.Append("\tScore: " + FString::FromInt(D_Data.PlayerScore[i]) + "\n");
+					//ContentToSave.Append("\n\tUpgrade Cards Player Has Obtained: \n\n");
+					//int j = 0;
+					//TArray<FString> test = D_Data.PlayerCards.Array().IndexOfByKey();
+					//for (auto DataPC : D_Data.PlayerCards)
+					//{
+					//	if (j == i)
+					//		ContentToSave.Append(" " + DataPC.Key);
+					//	j++;
+					//}
+					if (i < D_Data.CurrentCardPickedAtRound.Max())
+						ContentToSave.Append(D_Data.CurrentCardPickedAtRound[i]);
+						
+				}
+			}
+			ContentToSave.Append("\n-----------------\n\n");
+				
 		}
+		ContentToSave.Append("\nGAME OVER: Winner - " + FString::FromInt(WinnerID+1));
+		ContentToSave.Append("\n\n=================");
 		FFileHelper::SaveStringToFile(ContentToSave, *CompletePath, FFileHelper::EEncodingOptions::AutoDetect, &IFileManager::Get(), EFileWrite::FILEWRITE_None);
 	}
 	else
@@ -76,25 +132,25 @@ void UDebugDataGrabber::ClearLogSavedData()
 
 void UDebugDataGrabber::UpdateCardDataForPlayerOnRoundBasis(FCardStats Card, int PlayerID, bool PlayerWon)
 {
-	if (PlayerID == 1)
-		RoundCounter++;
+	DebugData[PlayerID].PlayerID = PlayerID;
+	DebugData[PlayerID].CurrentCardPickedAtRound.Add(Card.UpgradeParameters.UpgradeName);
 	
-
-	if (DebugData[PlayerID-1].PlayerCards.Find(Card.UpgradeParameters.UpgradeName))
-		DebugData[PlayerID-1].PlayerCards.Find(Card.UpgradeParameters.UpgradeName)->TimesCardPicked = 1;
+	if (DebugData[PlayerID].PlayerCards.Find(Card.UpgradeParameters.UpgradeName))
+		DebugData[PlayerID].PlayerCards.Find(Card.UpgradeParameters.UpgradeName)->TimesCardPicked = 1;
 		
 	if (PlayerWon)
 	{
-		for (auto& Element : DebugData[PlayerID - 1].PlayerCards)
+		//Debug me to check if a player owns the same card but stacked as we probably don't want to increase x amount of 1 card if multiple are owned
+		for (auto& Element : DebugData[PlayerID].PlayerCards)
 		{
 			Element.Value.TimesWonWithCard++;
 			UE_LOG(LogTemp, Warning, TEXT("The card %s has won %i times and has been picked %i times by PlayerID: %i on round %i"), *Element.Key, Element.Value.TimesWonWithCard, Element.Value.TimesCardPicked, PlayerID, RoundCounter);
 		}
 	}
 	
-	if (!DebugData[PlayerID-1].PlayerCards.Find(Card.UpgradeParameters.UpgradeName))
+	if (!DebugData[PlayerID].PlayerCards.Find(Card.UpgradeParameters.UpgradeName))
 	{
-		DebugData[PlayerID-1].PlayerCards.Add(Card.UpgradeParameters.UpgradeName).TimesCardPicked++;
+		DebugData[PlayerID].PlayerCards.Add(Card.UpgradeParameters.UpgradeName).TimesCardPicked++;
 	}
 	
 }
@@ -110,6 +166,7 @@ void UDebugDataGrabber::OnGameEndPrintAllData()
 		UE_LOG(LogClass, Error, TEXT("Card: %s, has been picked %i times and has won %i times"), *CardsChosen.Key, CardsChosen.Value.TimesCardPicked, CardsChosen.Value.TimesWonWithCard);
 	}
 	WriteAllSavedDebugDataToFile();
+	OverallCardsChosen.Empty();
 	GameCount++;
 }
 
@@ -130,4 +187,14 @@ void UDebugDataGrabber::FetchAllAvailableDebugData()
 		}
 		
 	}
+}
+
+void UDebugDataGrabber::SetPlayerScore_DEBUG(int ID, int Score)
+{
+	DebugData[ID].PlayerScore.Add(Score);
+}
+
+void UDebugDataGrabber::SetPlayerPosInGame_DEBUG(int ID, int Pos)
+{
+	DebugData[ID].PositionInGame.Add(Pos);
 }
