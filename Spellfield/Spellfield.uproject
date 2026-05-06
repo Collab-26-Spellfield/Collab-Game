@@ -251,5 +251,9 @@
 			"Name": "ChaosCaching",
 			"Enabled": true
 		}
+		{
+			"Name": "WaveformEditor",
+			"Enabled": true
+		}
 	]
 }
