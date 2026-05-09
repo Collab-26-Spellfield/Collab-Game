@@ -1,0 +1,81 @@
+Round: 1
+
+ Card Availability At Round End:
+	- Precision
+	- Orbit
+	- Speedy
+	- Parry
+
+
+P1:Orbit
+
+P2:Parry
+-----------------
+
+Round: 2
+
+ Card Availability At Round End:
+	- Protective Bubble
+	- Sap
+	- Lingering Magic
+	- Quick Strike
+
+
+P1:Sap
+
+P2:Lingering Magic
+-----------------
+
+Round: 3
+
+ Card Availability At Round End:
+	- Chaotic Blast
+	- Regeneration
+	- Glass Cannon
+	- Mastery
+
+
+P1:Mastery
+
+P2:Chaotic Blast
+-----------------
+
+Round: 4
+
+ Card Availability At Round End:
+	- Frenzy
+	- Volley
+	- Protective Bubble
+	- Mirror Image
+
+
+P1:Protective Bubble
+
+P2:Volley
+-----------------
+
+Round: 5
+
+ Card Availability At Round End:
+	- Tank
+	- Volley
+	- Parry
+	- Chaotic Blast
+
+
+P1:Parry
+
+P2:Chaotic Blast
+-----------------
+
+Round: 6
+
+P1:
+
+P2:
+-----------------
+
+
+GAME OVER: Winner - 1
+
+=================

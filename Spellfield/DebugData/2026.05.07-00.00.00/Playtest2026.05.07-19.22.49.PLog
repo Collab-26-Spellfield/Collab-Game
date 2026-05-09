@@ -1,0 +1,191 @@
+Round: 1
+
+ Card Availability At Round End:
+	- Nimble
+	- Bouncy
+	- Sentinel
+	- Sentry
+	- Mastery
+
+
+P1:Armoured
+
+P2:Armoured
+-----------------
+
+Round: 2
+
+ Card Availability At Round End:
+	- Precision
+	- Mirror Image
+	- Parry
+	- Flurry
+	- Healthy
+
+
+P1:Pacifist
+
+P2:Quick Fingers
+-----------------
+
+Round: 3
+
+ Card Availability At Round End:
+	- Sentinel
+	- Lightning
+	- Tank
+	- Mastery
+	- Speedy
+
+
+P1:Prepared Strike
+
+P2:Healthy
+-----------------
+
+Round: 4
+
+ Card Availability At Round End:
+	- Arcane Imbuement
+	- Precision
+	- Protective Bubble
+	- Regeneration
+	- Mastery
+
+
+P1:Mastery
+
+P2:Nimble
+-----------------
+
+Round: 5
+
+ Card Availability At Round End:
+	- Orbit
+	- Faster
+	- Tank
+	- Battle Mage
+	- Arcane Imbuement
+
+
+P1:Bouncy
+
+P2:Sentry
+-----------------
+
+Round: 6
+
+ Card Availability At Round End:
+	- Glass Cannon
+	- Parry
+	- Bouncy
+	- Mirror Image
+	- Overpowered
+
+
+P1:Mirror Image
+
+P2:Parry
+-----------------
+
+Round: 7
+
+ Card Availability At Round End:
+	- Bounciest
+	- Pacifist
+	- Heavy Staff
+	- Parry
+	- Bolt
+
+
+P1:Flurry
+
+P2:Healthy
+-----------------
+
+Round: 8
+
+ Card Availability At Round End:
+	- Lightning
+	- Bouncy
+	- Sap
+	- Bolt
+	- Lifesteal
+
+
+P1:Speedy
+
+P2:Mastery
+-----------------
+
+Round: 9
+
+ Card Availability At Round End:
+	- Overpowered
+	- Light Footed
+	- Rapid
+	- Heavy Staff
+	- Mirror Image
+
+
+P1:Tank
+
+P2:Lightning
+-----------------
+
+Round: 10
+
+ Card Availability At Round End:
+	- Power
+	- Lingering Magic
+	- Pacifist
+	- Overpowered
+	- Bounciest
+
+
+P1:Mastery
+
+P2:Arcane Imbuement
+-----------------
+
+Round: 11
+
+ Card Availability At Round End:
+	- Frenzy
+	- Lingering Magic
+	- All Rounder
+	- Healthy
+	- Quick Fingers
+
+
+P1:Regeneration
+
+P2:Protective Bubble
+-----------------
+
+Round: 12
+
+ Card Availability At Round End:
+	- Volley
+	- Arcane Imbuement
+	- Air Burst
+	- Flurry
+	- Lifesteal
+
+
+P1:Arcane Imbuement
+
+P2:Orbit
+-----------------
+
+Round: 13
+
+P1:Battle Mage
+
+P2:Faster
+-----------------
+
+
+GAME OVER: Winner - 1
+
+=================
