@@ -1,0 +1,81 @@
+Round: 1
+
+ Card Availability At Round End:
+	- Power
+	- Battle Mage
+	- Sap
+	- Poison
+	- Bouncy
+
+
+P1:Poison
+
+P2:Bouncy
+
+P3:Sap
+-----------------
+
+Round: 2
+
+ Card Availability At Round End:
+	- Battle Mage
+	- Mirror Image
+	- Sentinel
+	- Faster
+	- Slow Cast
+
+
+P1:Faster
+
+P2:Mirror Image
+
+P3:Slow Cast
+-----------------
+
+Round: 3
+
+ Card Availability At Round End:
+	- Fireball
+	- Sentry
+	- All Rounder
+	- Arcane Imbuement
+	- Frenzy
+
+
+P1:Arcane Imbuement
+
+P2:All Rounder
+
+P3:Fireball
+-----------------
+
+Round: 4
+
+ Card Availability At Round End:
+	- Prepared Strike
+	- Protective Bubble
+	- Pacifist
+	- Lifesteal
+	- Quick Strike
+
+
+P1:Quick Strike
+
+P2:Protective Bubble
+
+P3:Lifesteal
+-----------------
+
+Round: 5
+
+P1:
+
+P2:
+
+P3:
+-----------------
+
+
+GAME OVER: Winner - 3
+
+=================
